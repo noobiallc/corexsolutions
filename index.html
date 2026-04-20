@@ -7,7 +7,7 @@
   <meta name="description" content="CoreX helps local service businesses get more calls, messages, and inquiries by improving how they show up online and how they handle new leads."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
 
   <style>
     /* ─── Reset & base ───────────────────────────────────────────────────── */
@@ -45,22 +45,35 @@
 
     /* ─── Typography ─────────────────────────────────────────────────────── */
     .t-hero{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(32px,4vw,52px);
-      font-weight:900;
+      font-weight:800;
       line-height:1.05;
-      letter-spacing:-.03em;
+      letter-spacing:-.02em;
     }
     .t-h2{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(24px,2.8vw,38px);
       font-weight:800;
       line-height:1.1;
-      letter-spacing:-.025em;
+      letter-spacing:-.02em;
     }
     .t-h3{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(17px,1.8vw,22px);
       font-weight:700;
       line-height:1.25;
-      letter-spacing:-.015em;
+      letter-spacing:-.01em;
+    }
+    /* Italic serif accent — for orange words inside headings */
+    .grad-it{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
     }
     .t-body{font-size:clamp(14px,1.4vw,16px);line-height:1.7;color:var(--text-2)}
     .t-sm{font-size:13px;line-height:1.6;color:var(--text-2)}
@@ -266,8 +279,8 @@
     }
     /* ─── Globe background ───────────────────────────────────────────────── */
     #globe-canvas{
-      position:absolute;right:-80px;top:50%;transform:translateY(-50%);
-      width:560px;height:560px;
+      position:absolute;right:-60px;top:50%;transform:translateY(-50%);
+      width:400px;height:400px;
       opacity:.55;pointer-events:none;
     }
     @media(max-width:960px){#globe-canvas{display:none}}
@@ -319,7 +332,7 @@
 
         <h1 class="t-hero sr d2" style="margin-bottom:16px">
           Helping Service<br/>
-          <span class="grad">Businesses Turn</span><br/>
+          <span class="grad-it">Businesses Turn</span><br/>
           More Traffic Into Leads.
         </h1>
 
@@ -354,7 +367,7 @@
       <div class="sr" style="margin-bottom:20px"><span class="pill pill-dark">The Problem</span></div>
       <h2 class="t-h2 sr d1" style="margin-bottom:20px;color:#0a0a0a">
         If your website isn't bringing in leads,<br/>
-        <span class="grad">something is off.</span>
+        <span class="grad-it">something is off.</span>
       </h2>
       <p class="t-body sr d2" style="margin-bottom:48px;max-width:560px;color:#71717a">
         Most business owners we talk to say the same things — and it usually means their online setup isn't built to turn visitors into customers.
@@ -451,7 +464,7 @@
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:52px;flex-wrap:wrap">
       <div>
         <div class="sr" style="margin-bottom:16px"><span class="pill pill-dark">Real Results</span></div>
-        <h2 class="t-h2 sr d1" style="color:#0a0a0a">What Business Owners <span class="grad">Notice</span></h2>
+        <h2 class="t-h2 sr d1" style="color:#0a0a0a">What Business Owners <span class="grad-it">Notice</span></h2>
       </div>
       <p class="t-body sr d2" style="max-width:320px;color:#71717a">Real quotes from real business owners after working with CoreX.</p>
     </div>
@@ -561,28 +574,89 @@
 <!-- ══ WHO IT'S FOR ═══════════════════════════════════════════════════════════ -->
 <section style="padding:80px 0;background:var(--bg-2)">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:44px">
-      <div class="sr" style="margin-bottom:16px"><span class="pill pill-orange">Who It's For</span></div>
-      <h2 class="t-h2 sr d1">Built for <span class="grad">Service Businesses</span></h2>
-      <p class="t-body sr d2" style="max-width:520px;margin:16px auto 0">If your business relies on calls, messages, or customer inquiries to grow, this is built for you.</p>
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;margin-bottom:44px;flex-wrap:wrap">
+      <div>
+        <div class="sr" style="margin-bottom:14px"><span class="pill pill-orange">Who It's For</span></div>
+        <h2 class="t-h2 sr d1">Built for service <span class="grad-it">businesses.</span></h2>
+      </div>
+      <p class="t-body sr d2" style="max-width:320px;padding-top:12px">If your business depends on calls, messages, or inquiries to grow — this is built for you.</p>
     </div>
 
-    <div class="sr d3 ind-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:820px;margin:0 auto">
-      <div class="card" style="padding:28px 24px;text-align:left">
-        <div style="font-size:22px;margin-bottom:12px">🔧</div>
-        <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:8px">Home Services</p>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">HVAC, roofing, landscaping, flooring, plumbing, electrical, and similar trades.</p>
+    <style>
+      .ind-card{
+        position:relative;border-radius:var(--radius-lg);overflow:hidden;
+        height:440px;cursor:default;
+      }
+      .ind-card img{
+        position:absolute;inset:0;width:100%;height:100%;
+        object-fit:cover;object-position:center;
+        transition:transform .6s ease;
+      }
+      .ind-card:hover img{transform:scale(1.04)}
+      .ind-card-overlay{
+        position:absolute;inset:0;
+        background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,rgba(0,0,0,.08) 100%);
+      }
+      .ind-card-tag{
+        position:absolute;top:18px;left:18px;
+        font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+        color:rgba(255,255,255,.9);
+        background:rgba(0,0,0,.45);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(8px);
+        padding:5px 11px;border-radius:100px;
+      }
+      .ind-card-body{
+        position:absolute;bottom:0;left:0;right:0;padding:24px;
+      }
+      @media(max-width:700px){.ind-card-grid{grid-template-columns:1fr!important}.ind-card{height:320px}}
+    </style>
+
+    <div class="sr d3 ind-card-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=700&q=80"
+          alt="HVAC technician working"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Home Services</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Heating &amp; Cooling</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6">HVAC, plumbing, electrical — capture demand the moment homeowners search for help.</p>
+        </div>
       </div>
-      <div class="card" style="padding:28px 24px;text-align:left">
-        <div style="font-size:22px;margin-bottom:12px">🏫</div>
-        <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:8px">Trust-Based Businesses</p>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">Daycares and service businesses where trust and credibility are everything.</p>
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"
+          alt="Roofer working on a roof"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Roofing</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Roofing &amp; Exteriors</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6">Stand out fast — turn storm-season traffic into booked estimates and more calls.</p>
+        </div>
       </div>
-      <div class="card" style="padding:28px 24px;text-align:left">
-        <div style="font-size:22px;margin-bottom:12px">📞</div>
-        <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:8px">Local Businesses</p>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">Any local business that depends on calls, bookings, or form submissions to grow.</p>
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+          alt="Flooring professional at work"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Flooring</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Flooring &amp; Remodeling</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6">Showcase craftsmanship and make it effortless for clients to call or request a quote.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -593,7 +667,7 @@
   <div class="wrap">
     <div style="text-align:center;margin-bottom:56px">
       <div class="sr" style="margin-bottom:16px"><span class="pill pill-dark">Why CoreX</span></div>
-      <h2 class="t-h2 sr d1" style="color:#0a0a0a">Why Businesses <span class="grad">Choose CoreX</span></h2>
+      <h2 class="t-h2 sr d1" style="color:#0a0a0a">Why Businesses <span class="grad-it">Choose CoreX</span></h2>
     </div>
 
     <div class="sr d2 why-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
@@ -628,20 +702,42 @@
 
 
 <!-- ══ FINAL CTA ══════════════════════════════════════════════════════════════ -->
-<section id="cta" style="padding:120px 0;background:var(--bg);position:relative;overflow:hidden" class="noise">
-  <div class="orb" style="width:600px;height:500px;background:var(--orange-glow);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="wrap" style="position:relative;text-align:center">
-    <div class="sr" style="margin-bottom:20px"><span class="pill pill-orange">Let's Talk</span></div>
-    <h2 class="t-h2 sr d1" style="margin-bottom:20px;max-width:680px;margin-left:auto;margin-right:auto">
-      Let's Find What's<br/><span class="grad">Costing You Leads</span>
-    </h2>
-    <p class="t-body sr d2" style="max-width:480px;margin:0 auto 40px">
-      We'll review your website and show you exactly what might be stopping people from calling or reaching out — and what to fix first.
-    </p>
-    <div class="sr d3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="contact-us.html" class="btn btn-primary btn-lg">Get a Free Growth Review</a>
+<section id="cta" style="padding:60px 0 80px;background:var(--bg)">
+  <div class="wrap">
+    <div class="sr" style="border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:380px;background:#111;position:relative">
+      <style>@media(max-width:820px){.cta-card-grid{grid-template-columns:1fr!important}.cta-img-col{display:none!important}}</style>
+
+      <!-- Left: text -->
+      <div class="cta-card-grid" style="display:contents">
+        <div style="padding:56px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1">
+          <div style="margin-bottom:20px"><span class="pill pill-orange">Let's Talk</span></div>
+          <h2 class="t-h2" style="margin-bottom:20px;line-height:1.08">
+            Let's find what's<br/><span class="grad-it">costing you leads.</span>
+          </h2>
+          <p style="font-size:15px;color:var(--text-2);line-height:1.7;max-width:360px;margin-bottom:36px">
+            We'll review your website and show you exactly what might be stopping people from calling or reaching out — and what to fix first.
+          </p>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <a href="contact-us.html" class="btn btn-primary btn-lg" style="gap:10px">
+              Get a Free Growth Review
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <span style="font-size:13px;color:var(--text-3)">Free. No commitment.</span>
+          </div>
+        </div>
+
+        <!-- Right: image -->
+        <div class="cta-img-col" style="position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,#111 0%,transparent 30%)"></div>
+          <img
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80"
+            alt="Mobile phone"
+            style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.75"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
-    <p class="sr d4" style="margin-top:20px;font-size:13px;color:var(--text-3)">Free. No commitment. We'll show you what's costing you leads.</p>
   </div>
 </section>
 
@@ -812,7 +908,7 @@ window.addEventListener('mousemove',e=>{
   if(!ctx)return;
 
   // Match CSS dimensions at device pixel ratio
-  const SIZE=560;
+  const SIZE=400;
   const dpr=window.devicePixelRatio||1;
   canvas.width=SIZE*dpr;
   canvas.height=SIZE*dpr;
