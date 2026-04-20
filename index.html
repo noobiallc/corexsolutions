@@ -705,6 +705,115 @@
 </section>
 
 
+<!-- ══ FAQ ════════════════════════════════════════════════════════════════════ -->
+<style>
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.09)}
+.faq-item:first-child{border-top:1px solid rgba(0,0,0,.09)}
+.faq-btn{
+  width:100%;background:none;border:none;text-align:left;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:22px 0;
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;
+  font-size:17px;font-weight:700;color:#0a0a0a;line-height:1.3;
+}
+.faq-btn:hover{color:var(--orange)}
+.faq-icon{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  background:var(--orange);display:flex;align-items:center;justify-content:center;
+  transition:transform .3s ease;
+}
+.faq-icon svg{display:block}
+.faq-btn[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+.faq-answer{
+  overflow:hidden;max-height:0;transition:max-height .35s ease,padding .35s ease;
+  font-size:15.5px;line-height:1.75;color:#52525b;padding:0;
+}
+.faq-answer.open{max-height:600px;padding-bottom:22px}
+</style>
+<section id="faq" style="padding:80px 0 60px;background:#fff">
+  <div class="wrap">
+    <div class="sr" style="text-align:center;margin-bottom:52px">
+      <p class="t-xs" style="margin-bottom:12px">FAQ</p>
+      <h2 class="t-h2">Questions business owners <em class="grad-it">usually ask</em></h2>
+    </div>
+
+    <div class="faq-list sr d2">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What does the free growth review actually include?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">We take a look at your website and online presence the way a potential customer would, then tell you what's most likely costing you calls and inquiries. You'll get clear, practical feedback — not a sales pitch. Most reviews take a day or two to put together, and we follow up with what to fix first.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How much does this cost?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">The growth review is free. After that, pricing depends on what we actually find and what needs fixing — we don't do one-size-fits-all packages because every business is different. What we can tell you: you'll get a clear, upfront price before any work starts. No hidden fees, no surprises, no long contracts. If the price doesn't work for you, no hard feelings.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Do I have to rebuild my whole website?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">Usually not. Most of the time, the problem isn't the whole site — it's a few specific things getting in the way of people reaching out. We fix what's actually costing you leads, not what isn't broken.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How long before I see more calls or inquiries?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">Most businesses start seeing a difference within the first few weeks after the changes go live. Some improvements — like making it easier to contact you or fixing unclear messaging — work almost right away. Others build over time.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Do I have to sign a long-term contract?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">No. We don't lock anyone in. If we're a good fit and you want to keep working with us, we will. If not, no hard feelings.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What kinds of businesses do you work with?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">Local service businesses that rely on calls, messages, and inquiries to grow — HVAC, roofing, landscaping, flooring, contractors, daycares, and similar trades. If your business depends on customers reaching out, we can probably help.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What if I already have a marketing person or agency?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">That's fine. A lot of what we fix is separate from what a marketing agency typically handles — things like how clearly your business comes across, how easy it is to contact you, and how leads are handled once they come in. We can work alongside what you already have.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What happens after the free growth review?
+          <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><line x1="5.5" y1="0" x2="5.5" y2="11" stroke="#fff" stroke-width="1.8"/><line x1="0" y1="5.5" x2="11" y2="5.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+        </button>
+        <div class="faq-answer">We send you clear feedback on what's costing you leads and what to fix first. You decide what to do with it. If you want us to handle the fixes, we'll walk you through what that looks like. If not, the review is yours to keep — no pressure.</div>
+      </div>
+
+    </div>
+
+    <!-- Bridge to CTA -->
+    <div class="sr d3" style="text-align:center;margin-top:52px">
+      <p style="font-size:16px;color:#52525b;margin-bottom:20px">Still have questions? The growth review is the easiest way to get real answers about your specific business.</p>
+      <a href="contact-us.html" class="btn btn-primary">Get a Free Growth Review</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ FINAL CTA ══════════════════════════════════════════════════════════════ -->
 <section id="cta" style="padding:60px 0 80px;background:var(--bg)">
   <div class="wrap">
@@ -864,6 +973,25 @@ window.addEventListener('mousemove',e=>{
     el.style.marginTop=`${y*m*.4}px`;
   });
 },{passive:true});
+</script>
+
+<script>
+// ── FAQ accordion ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const expanded=btn.getAttribute('aria-expanded')==='true';
+    // close all
+    document.querySelectorAll('.faq-btn').forEach(b=>{
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // open clicked if it was closed
+    if(!expanded){
+      btn.setAttribute('aria-expanded','true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
 </script>
 
 <!-- ══ D3 + GLOBE ══════════════════════════════════════════════════════════ -->
