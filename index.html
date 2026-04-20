@@ -794,44 +794,6 @@
 
 <!-- ══ SCRIPTS ════════════════════════════════════════════════════════════════ -->
 <script>
-// ── Process tab data ─────────────────────────────────────────────────────────
-const STEP_ICONS=[
-  `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`,
-  `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
-  `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
-];
-const STEPS=[
-  {step:'STEP — 01',title:'We review what\'s not working',desc:"We look at your site and your contact flow the same way a potential customer would. We find what's getting in the way of people calling or reaching out.",
-   rows:[['We look at','Your site as a customer would'],['We find','What\'s stopping people from calling'],['We identify','The quickest things to fix']]},
-  {step:'STEP — 02',title:'We fix it',desc:"We make the changes — clearer messaging, easier contact, better first impression. No fluff. Just the things that actually get you more calls.",
-   rows:[['We fix','Your messaging and contact flow'],['We improve','How your business looks at first glance'],['We make sure','Leads don\'t slip through']]},
-  {step:'STEP — 03',title:'You get more leads',desc:"You start hearing from more people — calls, messages, form submissions. We track what's working and keep improving so it holds.",
-   rows:[['You get','More calls and inquiries'],['We track','What\'s converting'],['We keep','Improving so it holds']]},
-];
-
-const pStep=document.getElementById('p-step'),pTitle=document.getElementById('p-title'),
-      pDesc=document.getElementById('p-desc'),pVis=document.getElementById('p-visual'),
-      tabs=document.querySelectorAll('.ptab');
-
-function setStep(i){
-  const s=STEPS[i];
-  tabs.forEach((t,j)=>t.classList.toggle('on',j===i));
-  document.getElementById('p-icon').innerHTML=STEP_ICONS[i];
-  pStep.textContent=s.step; pTitle.textContent=s.title; pDesc.textContent=s.desc;
-  pVis.innerHTML=s.rows.map(([l,v])=>`
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 18px">
-      <p style="font-size:11px;color:rgba(255,255,255,.45);font-weight:600;margin-bottom:4px">${l}</p>
-      <p style="font-size:14px;color:#fff;font-weight:500">${v}</p>
-    </div>`).join('');
-}
-tabs.forEach((t,i)=>t.addEventListener('click',()=>setStep(i)));
-setStep(0);
-
-// Auto-cycle process tabs
-let pIdx=0, pTimer=setInterval(()=>{pIdx=(pIdx+1)%3;setStep(pIdx);},4000);
-document.querySelector('.process-grid')?.addEventListener('mouseenter',()=>clearInterval(pTimer));
-document.querySelector('.process-grid')?.addEventListener('mouseleave',()=>{pTimer=setInterval(()=>{pIdx=(pIdx+1)%3;setStep(pIdx);},4000);});
-
 // ── Scroll reveal ─────────────────────────────────────────────────────────────
 const revObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}});
