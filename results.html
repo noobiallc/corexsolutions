@@ -7,7 +7,7 @@
   <meta name="description" content="Real improvements that lead to more calls and inquiries. See what CoreX fixes and what that means for your business."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
 
   <style>
     /* ─── Reset & base ───────────────────────────────────────────────────── */
@@ -44,28 +44,41 @@
 
     /* ─── Typography ─────────────────────────────────────────────────────── */
     .t-hero{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(32px,4vw,52px);
-      font-weight:900;
+      font-weight:800;
       line-height:1.05;
-      letter-spacing:-.03em;
+      letter-spacing:-.02em;
     }
     .t-h2{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(24px,2.8vw,38px);
       font-weight:800;
       line-height:1.1;
-      letter-spacing:-.025em;
+      letter-spacing:-.02em;
     }
     .t-h3{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(17px,1.8vw,22px);
       font-weight:700;
       line-height:1.25;
-      letter-spacing:-.015em;
+      letter-spacing:-.01em;
     }
     .t-body{font-size:clamp(14px,1.4vw,16px);line-height:1.7;color:var(--text-2)}
     .t-xs{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
 
     /* Gradient text */
     .grad{
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    /* Italic serif accent */
+    .grad-it{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;
+      font-weight:700;
       background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
@@ -253,7 +266,7 @@
 
       <h1 class="t-hero sr d2" style="margin-bottom:20px">
         Real Improvements That<br/>
-        <span class="grad">Lead to More Calls</span><br/>
+        <span class="grad-it">Lead to More Calls</span><br/>
         and Inquiries.
       </h1>
 
@@ -274,7 +287,7 @@
   <div class="wrap">
     <div style="text-align:center;margin-bottom:56px">
       <div class="sr" style="margin-bottom:16px"><span class="pill pill-dark">What We Fix</span></div>
-      <h2 class="t-h2 sr d1" style="color:#0a0a0a">What Actually <span class="grad">Improves</span></h2>
+      <h2 class="t-h2 sr d1" style="color:#0a0a0a">What Actually <span class="grad-it">Improves</span></h2>
       <p class="sr d2" style="font-size:16px;color:#71717a;max-width:440px;margin:16px auto 0;line-height:1.65">These are the specific things we change — and what that means for you.</p>
     </div>
 
@@ -322,7 +335,7 @@
   <div class="wrap">
     <div style="text-align:center;margin-bottom:56px">
       <div class="sr" style="margin-bottom:16px"><span class="pill pill-orange">The Difference</span></div>
-      <h2 class="t-h2 sr d1">Before <span class="grad">vs After</span></h2>
+      <h2 class="t-h2 sr d1">Before <span class="grad-it">vs After</span></h2>
       <p class="sr d2" style="font-size:16px;color:var(--text-2);max-width:440px;margin:16px auto 0;line-height:1.65">What changes when the friction is gone.</p>
     </div>
 
@@ -395,11 +408,11 @@
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="sr" style="margin-bottom:16px"><span class="pill pill-dark">Real Business Owners</span></div>
-      <h2 class="t-h2 sr d1" style="color:#0a0a0a">What They're <span class="grad">Saying</span></h2>
+      <h2 class="t-h2 sr d1" style="color:#0a0a0a">What They're <span class="grad-it">Saying</span></h2>
       <p class="sr d2" style="font-size:16px;color:#71717a;max-width:420px;margin:16px auto 0;line-height:1.65">Real quotes from service business owners after working with CoreX.</p>
     </div>
 
-    <div class="tgrid sr d3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div class="tgrid sr d3" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
 
       <div class="card tcard" style="display:flex;flex-direction:column">
         <div class="stars">★★★★★</div>
@@ -428,6 +441,15 @@
         </div>
       </div>
 
+      <div class="card tcard" style="display:flex;flex-direction:column">
+        <div class="stars">★★★★★</div>
+        <p class="tcard-quote" style="flex:1">"CoreX rebuilt our website, added online payments, and set up automated invoicing. Our clients can now pay directly through the site and invoices go out on their own. It's saved us hours every week and made us look a lot more professional."</p>
+        <div style="display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--orange-lo);border:1px solid rgba(255,101,0,.2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--orange);flex-shrink:0">AB</div>
+          <div><div class="tcard-author-name">Adrian Bobeanu</div><div class="tcard-author-co">Review Hardwood and Carpet Center</div></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -439,7 +461,7 @@
     <div style="max-width:800px;margin:0 auto">
       <div style="text-align:center;margin-bottom:52px">
         <div class="sr" style="margin-bottom:16px"><span class="pill pill-orange">The Outcome</span></div>
-        <h2 class="t-h2 sr d1">What This <span class="grad">Leads To</span></h2>
+        <h2 class="t-h2 sr d1">What This <span class="grad-it">Leads To</span></h2>
         <p class="sr d2" style="font-size:16px;color:var(--text-2);max-width:420px;margin:16px auto 0;line-height:1.65">When the right things are fixed, your business grows on its own terms.</p>
       </div>
 
@@ -507,7 +529,7 @@
   <div class="wrap" style="position:relative;text-align:center">
     <div class="sr" style="margin-bottom:20px"><span class="pill pill-orange">Let's Talk</span></div>
     <h2 class="t-h2 sr d1" style="margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto">
-      See What's <span class="grad">Costing You Leads</span>
+      See What's <span class="grad-it">Costing You Leads</span>
     </h2>
     <p class="t-body sr d2" style="max-width:420px;margin:0 auto 40px">
       We'll take a look at your site and tell you exactly what's getting in the way of people calling or reaching out.

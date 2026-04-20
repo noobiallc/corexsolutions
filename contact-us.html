@@ -7,7 +7,7 @@
   <meta name="description" content="We'll review your website and show you what might be stopping people from calling or reaching out — and what to fix first."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
 
   <style>
     /* ─── Reset & base ───────────────────────────────────────────────────── */
@@ -43,18 +43,29 @@
 
     /* ─── Typography ─────────────────────────────────────────────────────── */
     .t-hero{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(30px,3.6vw,48px);
-      font-weight:900;
+      font-weight:800;
       line-height:1.05;
-      letter-spacing:-.03em;
+      letter-spacing:-.02em;
     }
     .t-h2{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
       font-size:clamp(22px,2.4vw,32px);
       font-weight:800;
       line-height:1.1;
-      letter-spacing:-.025em;
+      letter-spacing:-.02em;
     }
     .grad{
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .grad-it{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;
+      font-weight:700;
       background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
@@ -262,7 +273,7 @@
 
       <h1 class="t-hero sr d2" style="margin-bottom:20px">
         Get a Free<br/>
-        <span class="grad">Growth Review</span>
+        <span class="grad-it">Growth Review</span>
       </h1>
 
       <p class="sr d3" style="font-size:clamp(15px,1.5vw,17px);color:var(--text-2);line-height:1.7;max-width:520px;margin-bottom:32px">
