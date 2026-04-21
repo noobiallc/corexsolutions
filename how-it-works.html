@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How It Works — CoreX Solutions</title>
+  <meta name="description" content="Three steps, no surprises. Here's exactly what happens from the moment you reach out to the moment more customers start calling."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#0a0a0a;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    :root{
+      --bg:#0a0a0a;--bg-light:#f4f4f5;--card:#161616;--card-b:rgba(255,255,255,.065);
+      --orange:#ff6500;--orange-hi:#ff8c38;--orange-lo:rgba(255,101,0,.12);
+      --orange-glow:rgba(255,101,0,.18);
+      --text-2:#52525b;--text-3:#9898a2;--radius:16px;--radius-lg:24px;
+    }
+
+    .grad{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .grad-it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+    @media(max-width:768px){.wrap{padding:0 20px}}
+
+    /* ── Nav ── */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+    .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
+    @media(max-width:768px){.nav-inner{padding:0 20px}}
+    .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:13.5px;font-weight:500;color:#52525b;transition:color .2s}
+    .nav-link:hover,.nav-link.active{color:#0a0a0a}
+    .nav-link.active{font-weight:600}
+    #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
+    #mob-nav{display:none;border-top:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.97);max-height:0;overflow:hidden;transition:max-height .35s ease}
+    #mob-nav.open{max-height:320px}
+    .mob-links{padding:16px 20px;display:flex;flex-direction:column;gap:4px}
+    .mob-link{padding:10px 0;font-size:14px;color:#52525b;border-bottom:1px solid rgba(0,0,0,.07)}
+    @media(max-width:860px){.nav-links{display:none}#ham-btn{display:block}#mob-nav{display:block}}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:14px 26px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 24px rgba(255,101,0,.35),0 1px 0 rgba(255,255,255,.15) inset}
+    .btn-primary:hover{background:#e85c00;transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,101,0,.45)}
+    .btn-lg{padding:17px 34px;font-size:15px;border-radius:12px}
+
+    /* Pills */
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .pill-dark{background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);color:#3f3f46}
+    .pill-orange{background:var(--orange-lo);border:1px solid rgba(255,101,0,.25);color:var(--orange)}
+
+    /* ── Sections ── */
+    .section-light{padding:80px 0;background:#fff}
+    .section-gray{padding:80px 0;background:var(--bg-light)}
+    .section-dark{padding:80px 0;background:var(--bg)}
+    @media(max-width:768px){.section-light,.section-gray,.section-dark{padding:52px 0}}
+
+    /* ── Typography helpers ── */
+    .t-h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+    .t-h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(17px,1.8vw,22px);font-weight:700;line-height:1.25;letter-spacing:-.01em}
+    .t-body{font-size:clamp(15px,1.4vw,17px);line-height:1.8;color:var(--text-2)}
+    .t-xs{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+
+    /* ── Steps ── */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+    @media(max-width:860px){.steps-grid{grid-template-columns:1fr;gap:0}}
+    .step-card{position:relative}
+    @media(max-width:860px){
+      .step-card{padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,.08)}
+      .step-card:last-child{border-bottom:none;padding-bottom:0}
+    }
+    .step-number{
+      font-family:'Bricolage Grotesque',system-ui,sans-serif;
+      font-size:clamp(72px,8vw,104px);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.04em;
+      color:rgba(0,0,0,.06);
+      margin-bottom:4px;
+      display:block;
+    }
+    .step-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(20px,2vw,26px);font-weight:800;line-height:1.15;letter-spacing:-.02em;color:#0a0a0a;margin-bottom:16px}
+    .step-body{font-size:15px;line-height:1.8;color:#52525b;margin-bottom:24px}
+    .step-details{display:flex;flex-direction:column;gap:8px}
+    .step-detail{font-size:13.5px;color:#52525b;display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+    .step-detail-mark{color:var(--orange);flex-shrink:0;font-size:12px;margin-top:3px}
+
+    /* Divider between desktop columns */
+    @media(min-width:861px){
+      .step-card:not(:last-child){border-right:1px solid rgba(0,0,0,.07);padding-right:48px}
+      .step-card:not(:first-child){padding-left:0}
+    }
+
+    /* ── Fix cards ── */
+    .fix-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    @media(max-width:640px){.fix-grid{grid-template-columns:1fr}}
+    .fix-card{padding:28px 32px;border-radius:var(--radius);background:#fff;border:1px solid rgba(0,0,0,.09)}
+    .fix-card-title{font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .fix-card-title-mark{color:var(--orange);font-size:13px}
+    .fix-card-body{font-size:14px;color:#52525b;line-height:1.75}
+
+    /* ── Reassurance block ── */
+    .reassurance-row{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+    .reassurance-item{padding:0 48px;text-align:center;font-size:16px;font-weight:600;color:#0a0a0a;line-height:1.45}
+    .reassurance-item:not(:last-child){border-right:1px solid rgba(0,0,0,.1)}
+    @media(max-width:720px){
+      .reassurance-item{padding:18px 0;border-right:none!important;border-bottom:1px solid rgba(0,0,0,.08);width:100%}
+      .reassurance-item:last-child{border-bottom:none}
+    }
+
+    /* ── FAQ ── */
+    .faq-list{display:flex;flex-direction:column;gap:0}
+    .faq-item{border-bottom:1px solid rgba(0,0,0,.08)}
+    .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;color:#0a0a0a;transition:color .2s}
+    .faq-btn:hover{color:var(--orange)}
+    .faq-btn svg{flex-shrink:0;transition:transform .3s ease;color:var(--text-3)}
+    .faq-btn[aria-expanded="true"] svg{transform:rotate(45deg)}
+    .faq-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    .faq-body p{padding-bottom:22px;font-size:15px;color:#52525b;line-height:1.8}
+
+    /* ── Noise ── */
+    .noise::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px;pointer-events:none;opacity:.4;mix-blend-mode:overlay}
+    .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+
+    /* ── Footer ── */
+    footer{padding:56px 0 32px;background:#060606;border-top:1px solid rgba(255,255,255,.05)}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    @media(max-width:720px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+    .divider-line{border:none;border-top:1px solid rgba(255,255,255,.06)}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CoreX<span class="grad">.</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="how-it-works.html" class="nav-link active">How It Works</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="make-a-payment.html" class="nav-link">Make a Payment</a>
+      <a href="contact-us.html" class="btn btn-primary" style="padding:10px 22px;font-size:13.5px">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+    </div>
+    <button id="ham-btn" aria-label="Menu" aria-expanded="false">
+      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mob-nav">
+    <div class="mob-links">
+      <a href="index.html" class="mob-link">Home</a>
+      <a href="about.html" class="mob-link">About</a>
+      <a href="how-it-works.html" class="mob-link" style="color:#0a0a0a;font-weight:600">How It Works</a>
+      <a href="results.html" class="mob-link">Results</a>
+      <a href="make-a-payment.html" class="mob-link">Make a Payment</a>
+      <a href="contact-us.html" class="btn btn-primary" style="margin-top:12px;justify-content:center">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="mob-link" style="font-weight:600;color:#0a0a0a;text-align:center">(678) 835-8150</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ SECTION 1 — HERO ══════════════════════════════════════════════════════ -->
+<section class="section-light" style="padding-top:clamp(100px,10vw,140px);padding-bottom:clamp(52px,6vw,80px)">
+  <div class="wrap">
+    <div style="max-width:680px">
+      <div style="margin-bottom:20px"><span class="pill pill-dark">How It Works</span></div>
+      <h1 class="t-h2" style="color:#0a0a0a;margin-bottom:20px;font-size:clamp(32px,4vw,54px)">
+        Simple. Clear.<br/><em class="grad-it">No Surprises.</em>
+      </h1>
+      <p style="font-size:clamp(16px,1.6vw,19px);color:#52525b;line-height:1.75;max-width:560px">
+        We don't drag things out or overcomplicate the process. Here's exactly what happens from the moment you reach out to the moment more customers start calling.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 2 — THREE STEPS ═══════════════════════════════════════════════ -->
+<section class="section-gray">
+  <div class="wrap">
+
+    <div style="text-align:center;margin-bottom:64px">
+      <h2 class="t-h2" style="color:#0a0a0a">Three Steps. <em class="grad-it">That's It.</em></h2>
+    </div>
+
+    <div class="steps-grid">
+
+      <!-- Step 01 -->
+      <div class="step-card">
+        <span class="step-number">01</span>
+        <h3 class="step-title">The Intro Call</h3>
+        <p class="step-body">We start with a quick call — usually 15 to 20 minutes. No pitch, no presentation, no pressure. We ask about your business, where your leads are coming from today, and what's getting in the way of getting more. You talk, we listen.</p>
+        <div class="step-details">
+          <span class="step-detail"><span class="step-detail-mark">✦</span> Takes 15–20 minutes</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> No jargon, no sales pitch</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> You tell us about your business and your biggest frustrations</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> We figure out if we're the right fit for each other</span>
+        </div>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="step-card">
+        <span class="step-number">02</span>
+        <h3 class="step-title">The Growth Review</h3>
+        <p class="step-body">After the call, we do a thorough review of your website and your Google presence — the same way a potential customer would. We look at what's unclear, what's making people hesitate, what's making you hard to find, and what's making it harder than it should be to reach out. Then we put together clear, specific feedback on what's costing you the most calls and inquiries right now.</p>
+        <div class="step-details">
+          <span class="step-detail"><span class="step-detail-mark">✦</span> We review your website and Google presence</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> We look at it through the eyes of a potential customer</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> We identify what's costing you the most leads</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> You get clear, specific feedback — not a generic report</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> Most reviews are ready within 1–2 business days</span>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="step-card">
+        <span class="step-number">03</span>
+        <h3 class="step-title">The Fixes</h3>
+        <p class="step-body">Once you've seen the review and you're ready to move forward, we get to work. We fix what's actually costing you leads — whether that's unclear messaging, a weak Google presence, a site that doesn't make it easy to reach out, or leads that are slipping through once they come in. You'll know exactly what we're fixing and what it costs before we start. No surprises.</p>
+        <div class="step-details">
+          <span class="step-detail"><span class="step-detail-mark">✦</span> Clear scope — you know exactly what's being fixed</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> Upfront pricing — no hidden fees, no surprises</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> No long timelines — we move fast</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> No long contracts — no lock-ins</span>
+          <span class="step-detail"><span class="step-detail-mark">✦</span> We don't disappear after the work is done</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 3 — WHAT GETS FIXED ══════════════════════════════════════════ -->
+<section class="section-light">
+  <div class="wrap">
+
+    <div style="max-width:640px;margin-bottom:52px">
+      <div style="margin-bottom:16px"><span class="pill pill-dark">What We Fix</span></div>
+      <h2 class="t-h2" style="color:#0a0a0a;margin-bottom:16px">What We <em class="grad-it">Actually Fix</em></h2>
+      <p style="font-size:16px;color:#52525b;line-height:1.75">Every business is different. But here are the most common things getting in the way of more calls and inquiries.</p>
+    </div>
+
+    <div class="fix-grid">
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> Unclear Messaging</p>
+        <p class="fix-card-body">People land on your site and can't quickly figure out what you do, who you serve, or why they should call you. We fix that so the right people know immediately that you're the right choice.</p>
+      </div>
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> Weak Google Presence</p>
+        <p class="fix-card-body">You're not showing up when people search for businesses like yours — or your listing has wrong information, no photos, or too few reviews. We fix what's making you invisible or untrustworthy on Google.</p>
+      </div>
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> Hard to Contact</p>
+        <p class="fix-card-body">People are interested but reaching out feels like work — the phone number is buried, the form is complicated, or there's no obvious next step. We make it simple for someone to call or message you in seconds.</p>
+      </div>
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> Poor First Impression</p>
+        <p class="fix-card-body">Your business doesn't look trustworthy or credible at first glance — so people leave before they even read a word. We fix how your business comes across so people feel confident before they pick up the phone.</p>
+      </div>
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> Missed Leads</p>
+        <p class="fix-card-body">Inquiries are coming in but some are getting missed — calls going unanswered, messages sitting for too long, leads going cold. We help make sure every inquiry gets handled properly.</p>
+      </div>
+
+      <div class="fix-card">
+        <p class="fix-card-title"><span class="fix-card-title-mark">✦</span> No Consistent Lead Flow</p>
+        <p class="fix-card-body">Some weeks are busy, some are dead. There's no reliable, steady stream of calls and inquiries coming in. We fix the root causes so your lead flow becomes something you can count on.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 4 — REASSURANCE BLOCK ════════════════════════════════════════ -->
+<section style="padding:56px 0;background:#f0f0f1;border-top:1px solid rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06)">
+  <div class="wrap">
+    <div class="reassurance-row">
+      <p class="reassurance-item">Free to start.<br/>No commitment required.</p>
+      <p class="reassurance-item">Clear pricing before<br/>any work begins.</p>
+      <p class="reassurance-item">No long contracts.<br/>No lock-ins.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 5 — FAQ ═══════════════════════════════════════════════════════ -->
+<section class="section-light">
+  <div class="wrap">
+    <div style="max-width:720px;margin:0 auto">
+
+      <div style="margin-bottom:40px">
+        <h2 class="t-h2" style="color:#0a0a0a">Questions About <em class="grad-it">the Process</em></h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            How long does the whole process take?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>The intro call is 15–20 minutes. The growth review takes 1–2 business days. Once you're ready to move forward, how long the fixes take depends on what needs to be done — but we move fast and we'll give you a clear timeline before we start.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            What if I just want the review and not the fixes?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>That's completely fine. The review is yours to keep. Some business owners use it to fix things themselves, some share it with their current team or agency, and some come back to us when they're ready. No pressure either way.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Do I have to sign a contract?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>No. We don't lock anyone in. If we're a good fit and you want to keep working together, we will. If not, no hard feelings.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTION 6 — FINAL CTA ═════════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:var(--bg);position:relative;overflow:hidden" class="noise">
+  <div class="orb" style="width:600px;height:500px;background:var(--orange-glow);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="wrap" style="position:relative;text-align:center">
+    <div style="margin-bottom:20px"><span class="pill pill-orange">Get Started</span></div>
+    <h2 class="t-h2" style="color:#fff;margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto">
+      Ready to find out what's <em class="grad-it">costing you calls?</em>
+    </h2>
+    <p style="font-size:17px;color:#c4c4cc;max-width:500px;margin:0 auto 40px;line-height:1.7">
+      The growth review is free. We'll look at your website and Google presence and tell you exactly what to fix first — no pressure, no commitment.
+    </p>
+    <a href="contact-us.html" class="btn btn-primary btn-lg">Get a Free Growth Review</a>
+    <p style="margin-top:20px;font-size:13px;color:#9898a2">Free. No commitment. We follow up within 1 business day.</p>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid" style="margin-bottom:48px">
+      <div>
+        <div style="font-size:20px;font-weight:900;letter-spacing:-.03em;margin-bottom:14px">CoreX<span class="grad">.</span></div>
+        <p style="font-size:14px;color:#c4c4cc;line-height:1.7;max-width:240px">Helping service businesses get more calls, messages, and inquiries.</p>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9898a2;margin-bottom:20px">Navigation</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="index.html" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">Home</a>
+          <a href="about.html" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">About</a>
+          <a href="how-it-works.html" style="font-size:14px;color:#fff;font-weight:600">How It Works</a>
+          <a href="results.html" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">Results</a>
+          <a href="contact-us.html" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">Get a Free Growth Review</a>
+          <a href="make-a-payment.html" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">Make a Payment</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9898a2;margin-bottom:20px">Contact</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="tel:+16788358150" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">(678) 835-8150</a>
+          <a href="mailto:info@corexsolutions.net" style="font-size:14px;color:#c4c4cc;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c4c4cc'">info@corexsolutions.net</a>
+          <span style="font-size:14px;color:#9898a2">Peachtree Corners, GA</span>
+        </div>
+      </div>
+    </div>
+    <hr class="divider-line"/>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;flex-wrap:wrap;gap:12px">
+      <p style="font-size:12px;color:#9898a2">© 2026 CoreX Solutions. All rights reserved.</p>
+      <div style="display:flex;gap:20px">
+        <a href="make-a-payment.html" style="font-size:12px;color:#9898a2">Make a Payment</a>
+        <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
+        <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
+        <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══ MOBILE STICKY CTA ═════════════════════════════════════════════════════ -->
+<style>
+#mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#fff;border-top:1px solid rgba(0,0,0,.08);padding:12px 20px;padding-bottom:max(12px,env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(0,0,0,.1);transform:translateY(100%);opacity:0;transition:transform .35s ease,opacity .35s ease}
+#mob-sticky.show{transform:translateY(0);opacity:1}
+@media(max-width:768px){#mob-sticky{display:block}body{padding-bottom:72px}}
+</style>
+<div id="mob-sticky">
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="tel:+16788358150" style="display:flex;align-items:center;gap:8px;flex:1;justify-content:center;background:#f4f4f5;border-radius:10px;padding:13px 16px;font-size:15px;font-weight:700;color:#0a0a0a;text-decoration:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.18 1.22 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Us
+    </a>
+    <a href="contact-us.html" class="btn btn-primary" style="flex:2;justify-content:center;padding:13px 16px;font-size:15px;border-radius:10px">Get a Free Growth Review</a>
+  </div>
+</div>
+
+
+<!-- ══ SCRIPTS ═══════════════════════════════════════════════════════════════ -->
+<script>
+// Mobile nav
+const hamBtn = document.getElementById('ham-btn');
+const icoOpen = document.getElementById('ico-open');
+const icoClose = document.getElementById('ico-close');
+const mobNav = document.getElementById('mob-nav');
+hamBtn.addEventListener('click', () => {
+  const open = mobNav.classList.toggle('open');
+  icoOpen.style.display = open ? 'none' : 'block';
+  icoClose.style.display = open ? 'block' : 'none';
+  hamBtn.setAttribute('aria-expanded', open);
+});
+
+// Mobile sticky bar
+const mobSticky = document.getElementById('mob-sticky');
+window.addEventListener('scroll', () => {
+  if(mobSticky) mobSticky.classList.toggle('show', scrollY > 400);
+}, {passive:true});
+
+// FAQ accordion
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    // Close all
+    document.querySelectorAll('.faq-btn').forEach(b => {
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.style.maxHeight = null;
+    });
+    // Open this one if it was closed
+    if(!expanded){
+      btn.setAttribute('aria-expanded','true');
+      const body = btn.nextElementSibling;
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+});
+
+// Cookie banner
+(function(){
+  if(localStorage.getItem('cx_cookie_consent')) return;
+  const banner = document.getElementById('cookie-banner');
+  if(!banner) return;
+  setTimeout(() => banner.classList.add('show'), 800);
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('cx_cookie_consent','accepted');
+    banner.classList.remove('show');
+  });
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    localStorage.setItem('cx_cookie_consent','declined');
+    banner.classList.remove('show');
+  });
+})();
+</script>
+
+<!-- ══ COOKIE BANNER ═════════════════════════════════════════════════════════ -->
+<style>
+#cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);z-index:200;opacity:0;pointer-events:none;transition:transform .4s ease,opacity .4s ease;width:calc(100% - 48px);max-width:640px}
+#cookie-banner.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+@media(max-width:768px){#cookie-banner{bottom:80px;width:calc(100% - 32px)}}
+.cookie-inner{background:#fff;border-radius:16px;padding:20px 24px;box-shadow:0 8px 40px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.06);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cookie-text{font-size:13.5px;color:#52525b;line-height:1.55;flex:1;min-width:200px}
+.cookie-text a{color:var(--orange);text-decoration:underline;text-underline-offset:2px}
+.cookie-btns{display:flex;gap:8px;flex-shrink:0}
+.cookie-accept{padding:9px 18px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+.cookie-accept:hover{background:#e85c00}
+.cookie-decline{padding:9px 18px;border-radius:8px;background:transparent;color:#71717a;font-size:13px;font-weight:600;border:1.5px solid rgba(0,0,0,.12);cursor:pointer;transition:border-color .2s}
+.cookie-decline:hover{border-color:rgba(0,0,0,.25)}
+</style>
+<div id="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <div class="cookie-inner">
+    <p class="cookie-text">We use cookies to improve your experience on our site. By continuing, you agree to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-decline" id="cookie-decline">Decline</button>
+      <button class="cookie-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
