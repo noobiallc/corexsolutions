@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Make a Payment — CoreX Solutions</title>
+  <meta name="description" content="Securely submit a payment or deposit to CoreX Solutions."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'Inter',system-ui,sans-serif;background:#f4f4f5;color:#0a0a0a;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    :root{
+      --orange:#ff6500;--orange-hi:#ff8c38;--orange-lo:rgba(255,101,0,.12);
+      --text-2:#52525b;--text-3:#9898a2;
+    }
+    .grad{
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .grad-it{
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    /* Nav */
+    #nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+    .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
+    @media(max-width:768px){.nav-inner{padding:0 20px}}
+    .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-link{font-size:13.5px;font-weight:500;color:#52525b;transition:color .2s}
+    .nav-link:hover{color:#0a0a0a}
+    #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
+    #mob-nav{display:none;border-top:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.97);max-height:0;overflow:hidden;transition:max-height .35s ease}
+    #mob-nav.open{max-height:300px}
+    .mob-links{padding:16px 20px;display:flex;flex-direction:column;gap:4px}
+    .mob-link{padding:10px 0;font-size:14px;color:#52525b;border-bottom:1px solid rgba(0,0,0,.07)}
+    @media(max-width:860px){.nav-links{display:none}#ham-btn{display:block}#mob-nav{display:block}}
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;padding:15px 28px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;width:100%}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 24px rgba(255,101,0,.35),0 1px 0 rgba(255,255,255,.15) inset}
+    .btn-primary:hover{background:#e85c00;transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,101,0,.45)}
+    .btn-ghost{background:#fff;color:#0a0a0a;border:1.5px solid rgba(0,0,0,.12);display:inline-flex}
+    .btn-ghost:hover{border-color:rgba(0,0,0,.25)}
+    /* Form */
+    .page-wrap{max-width:560px;margin:0 auto;padding:60px 24px 96px}
+    .card{background:#fff;border-radius:20px;padding:36px;box-shadow:0 2px 24px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.05)}
+    .form-group{margin-bottom:20px}
+    label{display:block;font-size:13px;font-weight:600;color:#0a0a0a;margin-bottom:6px;letter-spacing:.01em}
+    label span{color:var(--orange)}
+    input,select,textarea{
+      width:100%;padding:13px 15px;border:1.5px solid rgba(0,0,0,.12);border-radius:10px;
+      font-family:'Inter',sans-serif;font-size:15px;color:#0a0a0a;background:#fff;
+      transition:border-color .2s,box-shadow .2s;outline:none;appearance:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,101,0,.12)}
+    .amount-wrap{position:relative}
+    .amount-wrap .currency{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:16px;font-weight:600;color:#52525b;pointer-events:none}
+    .amount-wrap input{padding-left:32px}
+    .divider-label{display:flex;align-items:center;gap:12px;margin:28px 0 24px}
+    .divider-label span{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);white-space:nowrap}
+    .divider-label::before,.divider-label::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.09)}
+    /* Payment type pills */
+    .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+    .type-pill{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;cursor:pointer;transition:all .2s;user-select:none}
+    .type-pill:hover{border-color:rgba(255,101,0,.4);background:rgba(255,101,0,.03)}
+    .type-pill.selected{border-color:var(--orange);background:rgba(255,101,0,.06)}
+    .type-pill input[type=radio]{display:none}
+    .type-pill-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,0,0,.2);flex-shrink:0;transition:all .2s;position:relative}
+    .type-pill.selected .type-pill-dot{border-color:var(--orange);background:var(--orange)}
+    .type-pill.selected .type-pill-dot::after{content:'';position:absolute;inset:3px;background:#fff;border-radius:50%}
+    .type-pill-text{font-size:14px;font-weight:600;color:#0a0a0a}
+    /* Trust row */
+    .trust-row{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)}
+    /* Success */
+    #success{display:none;text-align:center;padding:48px 24px}
+    #success.show{display:block}
+    #pay-form.hide{display:none}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CoreX<span class="grad">.</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">How It Works</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="contact-us.html" class="nav-link" style="font-weight:600;color:var(--orange)">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+    </div>
+    <button id="ham-btn" aria-label="Menu" aria-expanded="false">
+      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mob-nav">
+    <div class="mob-links">
+      <a href="index.html" class="mob-link">Home</a>
+      <a href="index.html#about" class="mob-link">About</a>
+      <a href="index.html#process" class="mob-link">How It Works</a>
+      <a href="results.html" class="mob-link">Results</a>
+      <a href="contact-us.html" class="mob-link" style="color:var(--orange);font-weight:600">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="mob-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ PAYMENT FORM ══════════════════════════════════════════════════════════ -->
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div style="text-align:center;margin-bottom:32px">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">CoreX Solutions</p>
+    <h1 style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(28px,4vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px">
+      Make a <em class="grad-it">Payment</em>
+    </h1>
+    <p style="font-size:15px;color:var(--text-2)">Pay an invoice, leave a deposit, or submit any other payment securely.</p>
+  </div>
+
+  <div class="card">
+
+    <!-- Success state -->
+    <div id="success">
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(255,101,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:22px;font-weight:800;margin-bottom:10px">Payment Received</h2>
+      <p style="font-size:15px;color:var(--text-2);line-height:1.7;max-width:340px;margin:0 auto 24px">Thank you — we've received your payment. You'll get a confirmation at the email address you provided.</p>
+      <p style="font-size:13px;color:var(--text-3)">Questions? Call us at <a href="tel:+16788358150" style="color:var(--orange)">(678) 835-8150</a></p>
+    </div>
+
+    <!-- Payment form -->
+    <form id="pay-form" action="https://formspree.io/f/REPLACE_WITH_PAYMENT_FORM_ID" method="POST">
+
+      <!-- Payment type -->
+      <div class="form-group">
+        <label>Payment type <span>*</span></label>
+        <div class="type-grid">
+          <label class="type-pill selected" id="pill-invoice">
+            <input type="radio" name="payment_type" value="Invoice Payment" checked/>
+            <div class="type-pill-dot"></div>
+            <span class="type-pill-text">Invoice Payment</span>
+          </label>
+          <label class="type-pill" id="pill-deposit">
+            <input type="radio" name="payment_type" value="Deposit"/>
+            <div class="type-pill-dot"></div>
+            <span class="type-pill-text">Deposit</span>
+          </label>
+          <label class="type-pill" id="pill-partial">
+            <input type="radio" name="payment_type" value="Partial Payment"/>
+            <div class="type-pill-dot"></div>
+            <span class="type-pill-text">Partial Payment</span>
+          </label>
+          <label class="type-pill" id="pill-other">
+            <input type="radio" name="payment_type" value="Other"/>
+            <div class="type-pill-dot"></div>
+            <span class="type-pill-text">Other</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div class="form-group">
+        <label for="amount">Amount <span>*</span></label>
+        <div class="amount-wrap">
+          <span class="currency">$</span>
+          <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required/>
+        </div>
+      </div>
+
+      <!-- Invoice / reference -->
+      <div class="form-group">
+        <label for="invoice_ref">Invoice or reference number <span style="color:var(--text-3);font-weight:400">(if applicable)</span></label>
+        <input type="text" id="invoice_ref" name="invoice_reference" placeholder="e.g. INV-2026-001"/>
+      </div>
+
+      <div class="divider-label"><span>Your information</span></div>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Full name <span>*</span></label>
+        <input type="text" id="name" name="name" placeholder="John Smith" required/>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email address <span>*</span></label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required/>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone number <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(678) 555-0100"/>
+      </div>
+
+      <!-- Note -->
+      <div class="form-group">
+        <label for="note">Note <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+        <textarea id="note" name="note" rows="3" placeholder="Any additional details about this payment..." style="resize:vertical"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary" style="margin-top:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        Submit Payment
+      </button>
+
+      <!-- Trust signals -->
+      <div class="trust-row">
+        <span class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secure & encrypted
+        </span>
+        <span class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Confirmation sent to your email
+        </span>
+        <span class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Processed same day
+        </span>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- Help -->
+  <p style="text-align:center;font-size:14px;color:var(--text-3);margin-top:24px">
+    Need help? Call us at <a href="tel:+16788358150" style="color:var(--orange);font-weight:600">(678) 835-8150</a> or email <a href="mailto:info@corexsolutions.net" style="color:var(--orange);font-weight:600">info@corexsolutions.net</a>
+  </p>
+
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════════ -->
+<footer style="padding:32px 0;background:#060606;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+    <div>
+      <div style="font-size:18px;font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:4px">CoreX<span class="grad">.</span></div>
+      <p style="font-size:13px;color:#9898a2">Peachtree Corners, GA &nbsp;·&nbsp; (678) 835-8150</p>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
+      <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
+    </div>
+  </div>
+  <div style="text-align:center;padding-top:20px;margin-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+    <p style="font-size:12px;color:#9898a2">© 2026 CoreX Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════════════════════════ -->
+<script>
+// Payment type pills
+document.querySelectorAll('.type-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.type-pill').forEach(p => p.classList.remove('selected'));
+    pill.classList.add('selected');
+  });
+});
+
+// Form submission
+const form = document.getElementById('pay-form');
+const success = document.getElementById('success');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Processing...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      form.classList.add('hide');
+      success.classList.add('show');
+    } else {
+      btn.textContent = 'Submit Payment';
+      btn.disabled = false;
+      alert('Something went wrong. Please call us at (678) 835-8150 or email info@corexsolutions.net');
+    }
+  } catch {
+    btn.textContent = 'Submit Payment';
+    btn.disabled = false;
+    alert('Something went wrong. Please call us at (678) 835-8150 or email info@corexsolutions.net');
+  }
+});
+
+// Mobile nav
+const hamBtn = document.getElementById('ham-btn');
+const icoOpen = document.getElementById('ico-open');
+const icoClose = document.getElementById('ico-close');
+const mobNav = document.getElementById('mob-nav');
+hamBtn.addEventListener('click', () => {
+  const open = mobNav.classList.toggle('open');
+  icoOpen.style.display = open ? 'none' : 'block';
+  icoClose.style.display = open ? 'block' : 'none';
+  hamBtn.setAttribute('aria-expanded', open);
+});
+</script>
+
+</body>
+</html>
