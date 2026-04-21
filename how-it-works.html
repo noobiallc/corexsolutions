@@ -409,18 +409,7 @@
 
 <!-- ══ MOBILE STICKY CTA ═════════════════════════════════════════════════════ -->
 <style>
-#mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#fff;border-top:1px solid rgba(0,0,0,.08);padding:12px 20px;padding-bottom:max(12px,env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(0,0,0,.1);transform:translateY(100%);opacity:0;transition:transform .35s ease,opacity .35s ease}
-#mob-sticky.show{transform:translateY(0);opacity:1}
-@media(max-width:768px){#mob-sticky{display:block}body{padding-bottom:72px}}
 </style>
-<div id="mob-sticky">
-  <div style="display:flex;align-items:center;gap:12px">
-    <a href="tel:+16788358150" style="display:flex;align-items:center;gap:8px;flex:1;justify-content:center;background:#f4f4f5;border-radius:10px;padding:13px 16px;font-size:15px;font-weight:700;color:#0a0a0a;text-decoration:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.18 1.22 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Call Us
-    </a>
-    <a href="contact-us.html" class="btn btn-primary" style="flex:2;justify-content:center;padding:13px 16px;font-size:15px;border-radius:10px">Get a Free Growth Review</a>
-  </div>
 </div>
 
 
@@ -439,7 +428,6 @@ hamBtn.addEventListener('click', () => {
 });
 
 // Mobile sticky bar
-const mobSticky = document.getElementById('mob-sticky');
 window.addEventListener('scroll', () => {
   if(mobSticky) mobSticky.classList.toggle('show', scrollY > 400);
 }, {passive:true});
