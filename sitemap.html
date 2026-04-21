@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Map — CoreX Solutions</title>
+  <meta name="description" content="A full overview of every page on the CoreX Solutions website."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'Inter',system-ui,sans-serif;background:#f4f4f5;color:#0a0a0a;-webkit-font-smoothing:antialiased;line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    :root{
+      --orange:#ff6500;--orange-hi:#ff8c38;--orange-lo:rgba(255,101,0,.12);
+      --text-2:#52525b;--text-3:#9898a2;
+    }
+    .grad{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .grad-it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* Nav */
+    #nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+    .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
+    @media(max-width:768px){.nav-inner{padding:0 20px}}
+    .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-link{font-size:13.5px;font-weight:500;color:#52525b;transition:color .2s}
+    .nav-link:hover{color:#0a0a0a}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 24px rgba(255,101,0,.35)}
+    .btn-primary:hover{background:#e85c00}
+    #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
+    #mob-nav{display:none;border-top:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.97);max-height:0;overflow:hidden;transition:max-height .35s ease}
+    #mob-nav.open{max-height:320px}
+    .mob-links{padding:16px 20px;display:flex;flex-direction:column;gap:4px}
+    .mob-link{padding:10px 0;font-size:14px;color:#52525b;border-bottom:1px solid rgba(0,0,0,.07)}
+    @media(max-width:860px){.nav-links{display:none}#ham-btn{display:block}#mob-nav{display:block}}
+    /* Page */
+    .wrap{max-width:960px;margin:0 auto;padding:0 32px}
+    @media(max-width:768px){.wrap{padding:0 20px}}
+    .page-header{padding:64px 0 48px;text-align:center}
+    /* Sitemap grid */
+    .sm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:80px}
+    @media(max-width:720px){.sm-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.sm-grid{grid-template-columns:1fr}}
+    .sm-card{background:#fff;border-radius:16px;padding:28px;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 12px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
+    .sm-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+    .sm-card-icon{width:40px;height:40px;border-radius:10px;background:var(--orange-lo);border:1px solid rgba(255,101,0,.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .sm-card-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:17px;font-weight:800;color:#0a0a0a;margin-bottom:6px;letter-spacing:-.01em}
+    .sm-card-desc{font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:16px}
+    .sm-card-link{font-size:13px;font-weight:600;color:var(--orange);display:inline-flex;align-items:center;gap:5px}
+    .sm-card-link:hover{text-decoration:underline;text-underline-offset:2px}
+    .sm-sub{margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.07);display:flex;flex-direction:column;gap:6px}
+    .sm-sub-link{font-size:13px;color:var(--text-2);display:flex;align-items:center;gap:6px;transition:color .2s}
+    .sm-sub-link:hover{color:var(--orange)}
+    .sm-sub-link::before{content:'↳';font-size:11px;color:var(--text-3)}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin:40px 0 16px}
+    /* Footer */
+    footer{padding:40px 0 32px;background:#060606;border-top:1px solid rgba(255,255,255,.05)}
+    .footer-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    @media(max-width:768px){.footer-inner{padding:0 20px}}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CoreX<span class="grad">.</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#process" class="nav-link">How It Works</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="make-a-payment.html" class="nav-link">Make a Payment</a>
+      <a href="contact-us.html" class="btn btn-primary">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+    </div>
+    <button id="ham-btn" aria-label="Menu" aria-expanded="false">
+      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mob-nav">
+    <div class="mob-links">
+      <a href="index.html" class="mob-link">Home</a>
+      <a href="index.html#about" class="mob-link">About</a>
+      <a href="index.html#process" class="mob-link">How It Works</a>
+      <a href="results.html" class="mob-link">Results</a>
+      <a href="make-a-payment.html" class="mob-link">Make a Payment</a>
+      <a href="contact-us.html" class="btn btn-primary" style="margin-top:12px;justify-content:center">Get a Free Growth Review</a>
+      <a href="tel:+16788358150" class="mob-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ CONTENT ══════════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div class="page-header">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">CoreX Solutions</p>
+    <h1 style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px">
+      Site <em class="grad-it">Map</em>
+    </h1>
+    <p style="font-size:15px;color:var(--text-2)">Every page on the CoreX Solutions website.</p>
+  </div>
+
+  <!-- Main pages -->
+  <p class="section-label">Main Pages</p>
+  <div class="sm-grid">
+
+    <!-- Home -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="sm-card-title">Home</div>
+      <div class="sm-card-desc">The main landing page — who we help, what we fix, how it works, and why it matters.</div>
+      <a href="index.html" class="sm-card-link">Visit page <span>→</span></a>
+      <div class="sm-sub">
+        <a href="index.html#about" class="sm-sub-link">About CoreX</a>
+        <a href="index.html#process" class="sm-sub-link">How It Works</a>
+        <a href="index.html#faq" class="sm-sub-link">FAQ</a>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="sm-card-title">Results</div>
+      <div class="sm-card-desc">What actually improves, before vs. after breakdowns, real client testimonials, and a case study.</div>
+      <a href="results.html" class="sm-card-link">Visit page <span>→</span></a>
+      <div class="sm-sub">
+        <a href="results.html#" class="sm-sub-link">What Actually Improves</a>
+        <a href="results.html#" class="sm-sub-link">Before vs. After</a>
+        <a href="results.html#" class="sm-sub-link">Hardwood & Carpet Center Case Study</a>
+        <a href="results.html#" class="sm-sub-link">Client Testimonials</a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div class="sm-card-title">Get a Free Growth Review</div>
+      <div class="sm-card-desc">Submit a request for your free growth review. We'll take a look and follow up with clear, practical feedback.</div>
+      <a href="contact-us.html" class="sm-card-link">Visit page <span>→</span></a>
+    </div>
+
+    <!-- Make a Payment -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      </div>
+      <div class="sm-card-title">Make a Payment</div>
+      <div class="sm-card-desc">Securely submit an invoice payment, deposit, or any other payment to CoreX Solutions.</div>
+      <a href="make-a-payment.html" class="sm-card-link">Visit page <span>→</span></a>
+    </div>
+
+    <!-- Privacy Policy -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="sm-card-title">Privacy Policy</div>
+      <div class="sm-card-desc">How we collect, use, and protect your information.</div>
+      <a href="privacy-policy.html" class="sm-card-link">Visit page <span>→</span></a>
+    </div>
+
+    <!-- Terms -->
+    <div class="sm-card">
+      <div class="sm-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="sm-card-title">Terms & Conditions</div>
+      <div class="sm-card-desc">The terms that govern use of our website and services.</div>
+      <a href="terms-and-conditions.html" class="sm-card-link">Visit page <span>→</span></a>
+    </div>
+
+  </div>
+
+  <!-- Contact strip -->
+  <div style="background:#fff;border-radius:16px;padding:28px 32px;border:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:80px">
+    <div>
+      <p style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:17px;font-weight:800;margin-bottom:4px">Can't find what you're looking for?</p>
+      <p style="font-size:14px;color:var(--text-2)">Call or email us directly — we're happy to help.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="tel:+16788358150" style="display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;border:1.5px solid rgba(0,0,0,.1);font-size:14px;font-weight:600;color:#0a0a0a;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(0,0,0,.3)'" onmouseout="this.style.borderColor='rgba(0,0,0,.1)'">(678) 835-8150</a>
+      <a href="contact-us.html" style="display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;background:var(--orange);color:#fff;font-size:14px;font-weight:600;box-shadow:0 4px 16px rgba(255,101,0,.3)">Get a Free Growth Review</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="font-size:18px;font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:4px">CoreX<span class="grad">.</span></div>
+      <p style="font-size:13px;color:#9898a2">Peachtree Corners, GA &nbsp;·&nbsp; (678) 835-8150 &nbsp;·&nbsp; info@corexsolutions.net</p>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="make-a-payment.html" style="font-size:12px;color:#9898a2">Make a Payment</a>
+      <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
+      <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
+      <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
+    </div>
+  </div>
+  <div style="text-align:center;padding-top:20px;margin-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+    <p style="font-size:12px;color:#9898a2">© 2026 CoreX Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const hamBtn=document.getElementById('ham-btn');
+const icoOpen=document.getElementById('ico-open');
+const icoClose=document.getElementById('ico-close');
+const mobNav=document.getElementById('mob-nav');
+hamBtn.addEventListener('click',()=>{
+  const open=mobNav.classList.toggle('open');
+  icoOpen.style.display=open?'none':'block';
+  icoClose.style.display=open?'block':'none';
+  hamBtn.setAttribute('aria-expanded',open);
+});
+</script>
+</body>
+</html>

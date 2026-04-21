@@ -246,6 +246,31 @@
       body{padding-bottom:72px}
     }
 
+
+    /* ─── Cookie banner ──────────────────────────────────────────────────── */
+    #cookie-banner{
+      position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);
+      z-index:200;opacity:0;pointer-events:none;
+      transition:transform .4s ease,opacity .4s ease;
+      width:calc(100% - 48px);max-width:640px;
+    }
+    #cookie-banner.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+    @media(max-width:768px){
+      #cookie-banner{bottom:80px;width:calc(100% - 32px)}
+    }
+    .cookie-inner{
+      background:#fff;border-radius:16px;padding:20px 24px;
+      box-shadow:0 8px 40px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.06);
+      display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    }
+    .cookie-text{font-size:13.5px;color:#52525b;line-height:1.55;flex:1;min-width:200px}
+    .cookie-text a{color:var(--orange);text-decoration:underline;text-underline-offset:2px}
+    .cookie-btns{display:flex;gap:8px;flex-shrink:0}
+    .cookie-accept{padding:9px 18px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+    .cookie-accept:hover{background:#e85c00}
+    .cookie-decline{padding:9px 18px;border-radius:8px;background:transparent;color:#71717a;font-size:13px;font-weight:600;border:1.5px solid rgba(0,0,0,.12);cursor:pointer;transition:border-color .2s}
+    .cookie-decline:hover{border-color:rgba(0,0,0,.25)}
+
     /* ─── Divider ─────────────────────────────────────────────────────────── */
     .divider{border:none;border-top:1px solid rgba(255,255,255,.06)}
 
@@ -922,11 +947,24 @@
         <a href="make-a-payment.html" style="font-size:12px;color:var(--text-3)">Make a Payment</a>
         <a href="privacy-policy.html" style="font-size:12px;color:var(--text-3)">Privacy Policy</a>
         <a href="terms-and-conditions.html" style="font-size:12px;color:var(--text-3)">Terms</a>
+        <a href="sitemap.html" style="font-size:12px;color:var(--text-3)">Site Map</a>
       </div>
     </div>
   </div>
 </footer>
 
+
+
+<!-- ══ COOKIE BANNER ═════════════════════════════════════════════════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <div class="cookie-inner">
+    <p class="cookie-text">We use cookies to improve your experience on our site. By continuing, you agree to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-decline" id="cookie-decline">Decline</button>
+      <button class="cookie-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══ MOBILE STICKY CTA ════════════════════════════════════════════════════ -->
 <div id="mob-sticky">
@@ -1004,6 +1042,22 @@ mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mOpen=false;mobNav.classList.remove('open');
   icoO.style.display='block';icoC.style.display='none';
 }));
+
+
+// ── Cookie banner ──────────────────────────────────────────────────────────────
+(function(){
+  if(localStorage.getItem('cx_cookie_consent'))return;
+  const banner=document.getElementById('cookie-banner');
+  setTimeout(()=>banner.classList.add('show'),800);
+  document.getElementById('cookie-accept').addEventListener('click',()=>{
+    localStorage.setItem('cx_cookie_consent','accepted');
+    banner.classList.remove('show');
+  });
+  document.getElementById('cookie-decline').addEventListener('click',()=>{
+    localStorage.setItem('cx_cookie_consent','declined');
+    banner.classList.remove('show');
+  });
+})();
 
 // ── Bottom pill ───────────────────────────────────────────────────────────────
 const bpill=document.getElementById('bpill');
