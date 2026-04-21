@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You — CoreX Solutions</title>
+  <title>You're All Set — CoreX Solutions</title>
   <meta name="robots" content="noindex"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -11,86 +11,123 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:#0a0a0a;color:#fff;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      min-height:100vh;
+      display:flex;flex-direction:column;
+    }
     a{text-decoration:none;color:inherit}
-    :root{--orange:#ff6500;--orange-hi:#ff8c38;--orange-lo:rgba(255,101,0,.12);--text-2:#c4c4cc;--text-3:#9898a2}
-    .grad{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .grad-it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    /* Nav */
-    #nav{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
-    .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
+    :root{
+      --orange:#ff6500;--orange-hi:#ff8c38;
+      --text-2:#c4c4cc;--text-3:#9898a2;
+    }
+    .grad{
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .grad-it{
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;
+      background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hi) 60%,#ffb347 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    /* Nav — logo only */
+    #nav{
+      background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .nav-inner{
+      max-width:1280px;margin:0 auto;padding:0 32px;
+      height:62px;display:flex;align-items:center;
+    }
     @media(max-width:768px){.nav-inner{padding:0 20px}}
     .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
-    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none}
-    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 24px rgba(255,101,0,.35)}
-    .btn-primary:hover{background:#e85c00}
-    .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12)}
-    .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
     /* Content */
-    .hero{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+    .page{
+      flex:1;display:flex;align-items:center;justify-content:center;
+      padding:80px 24px;text-align:center;position:relative;overflow:hidden;
+    }
     .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .fade-up{animation:fadeUp .7s ease-out forwards}
-    .d1{animation-delay:.1s;opacity:0}
-    .d2{animation-delay:.2s;opacity:0}
-    .d3{animation-delay:.32s;opacity:0}
-    .d4{animation-delay:.46s;opacity:0}
-    /* Footer */
-    footer{padding:32px 0;background:#060606;border-top:1px solid rgba(255,255,255,.05)}
-    .footer-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    @media(max-width:768px){.footer-inner{padding:0 20px}}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .d1{animation:fadeUp .65s .08s ease-out forwards;opacity:0}
+    .d2{animation:fadeUp .65s .18s ease-out forwards;opacity:0}
+    .d3{animation:fadeUp .65s .30s ease-out forwards;opacity:0}
+    .d4{animation:fadeUp .65s .44s ease-out forwards;opacity:0}
+    .d5{animation:fadeUp .65s .58s ease-out forwards;opacity:0}
+
+    .contact-block{
+      display:flex;flex-direction:column;gap:10px;
+      margin:28px auto 0;max-width:320px;
+    }
+    .contact-row{
+      display:flex;align-items:center;gap:10px;justify-content:center;
+      font-size:16px;font-weight:600;color:#fff;
+    }
+    .contact-row svg{flex-shrink:0;color:var(--orange)}
+    .contact-row a{color:#fff;transition:color .2s}
+    .contact-row a:hover{color:var(--orange)}
   </style>
 </head>
 <body>
 
+<!-- Logo-only nav -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">CoreX<span class="grad">.</span></a>
-    <a href="index.html" class="btn btn-primary">Back to Home</a>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="orb" style="width:600px;height:500px;background:rgba(255,101,0,.12);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+<div class="page">
+  <div class="orb" style="width:600px;height:500px;background:rgba(255,101,0,.1);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+
   <div style="position:relative;max-width:560px">
 
-    <!-- Check icon -->
-    <div class="fade-up d1" style="width:72px;height:72px;border-radius:50%;background:rgba(255,101,0,.12);border:1px solid rgba(255,101,0,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 28px">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <!-- Check mark -->
+    <div class="d1" style="width:64px;height:64px;border-radius:50%;background:rgba(255,101,0,.1);border:1px solid rgba(255,101,0,.22);display:flex;align-items:center;justify-content:center;margin:0 auto 28px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
 
-    <h1 class="fade-up d2" style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px">
-      We received your request.<br/><em class="grad-it">We'll be in touch soon.</em>
+    <!-- Heading -->
+    <h1 class="d2" style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:24px">
+      You're <em class="grad-it">All Set.</em>
     </h1>
 
-    <p class="fade-up d3" style="font-size:16px;color:var(--text-2);line-height:1.7;margin-bottom:36px">
-      Most reviews take a day or two to put together. We'll follow up with clear, practical feedback on what's getting in the way — and what to fix first.
+    <!-- Body -->
+    <p class="d3" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:8px">
+      We'll review your website and Google presence over the next day or two and follow up with clear, practical feedback — what's getting in the way of calls and inquiries, and what to fix first.
+    </p>
+    <p class="d3" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:28px">
+      Keep an eye on your inbox.
     </p>
 
-    <div class="fade-up d4" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="index.html" class="btn btn-ghost">Back to Home</a>
-      <a href="results.html" class="btn btn-primary">See Real Results</a>
+    <!-- Divider -->
+    <div class="d4" style="border-top:1px solid rgba(255,255,255,.08);margin-bottom:28px"></div>
+
+    <!-- Contact -->
+    <p class="d4" style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:16px">In the meantime, if you have questions</p>
+    <div class="contact-block d4">
+      <div class="contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.18 1.22 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:+16788358150">(678) 835-8150</a>
+      </div>
+      <div class="contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:info@corexsolutions.net">info@corexsolutions.net</a>
+      </div>
     </div>
 
-    <p class="fade-up d4" style="margin-top:24px;font-size:13px;color:var(--text-3)">
-      Questions in the meantime? Call us at <a href="tel:+16788358150" style="color:var(--orange)">(678) 835-8150</a>
+    <!-- Small text -->
+    <p class="d5" style="margin-top:36px;font-size:13px;color:var(--text-3)">
+      No pressure. No commitment. Just honest feedback.
     </p>
 
   </div>
 </div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div style="font-size:18px;font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:4px">CoreX<span class="grad">.</span></div>
-      <p style="font-size:13px;color:#9898a2">Peachtree Corners, GA &nbsp;·&nbsp; (678) 835-8150</p>
-    </div>
-    <div style="display:flex;gap:20px;flex-wrap:wrap">
-      <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
-      <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
