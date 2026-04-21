@@ -114,7 +114,7 @@
     @media(max-width:768px){.nav-inner{padding:0 20px}}
     .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
     .nav-links{display:flex;align-items:center;gap:28px}
-    .nav-link{font-size:13.5px;font-weight:500;color:#52525b;transition:color .2s}
+    .nav-link{font-size:16px;font-weight:500;color:#52525b;transition:color .2s}
     .nav-link:hover{color:#0a0a0a}
     #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
     #mob-nav{
@@ -165,12 +165,12 @@
       box-shadow:0 8px 40px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.06);
       display:flex;align-items:center;gap:16px;flex-wrap:wrap;
     }
-    .cookie-text{font-size:13.5px;color:#52525b;line-height:1.55;flex:1;min-width:200px}
+    .cookie-text{font-size:14px;color:#52525b;line-height:1.55;flex:1;min-width:200px}
     .cookie-text a{color:var(--orange);text-decoration:underline;text-underline-offset:2px}
     .cookie-btns{display:flex;gap:8px;flex-shrink:0}
-    .cookie-accept{padding:9px 18px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+    .cookie-accept{padding:9px 18px;border-radius:8px;background:var(--orange);color:#fff;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
     .cookie-accept:hover{background:#e85c00}
-    .cookie-decline{padding:9px 18px;border-radius:8px;background:transparent;color:#71717a;font-size:13px;font-weight:600;border:1.5px solid rgba(0,0,0,.12);cursor:pointer;transition:border-color .2s}
+    .cookie-decline{padding:9px 18px;border-radius:8px;background:transparent;color:#71717a;font-size:14px;font-weight:600;border:1.5px solid rgba(0,0,0,.12);cursor:pointer;transition:border-color .2s}
     .cookie-decline:hover{border-color:rgba(0,0,0,.25)}
 
     /* ─── Divider ─────────────────────────────────────────────────────────── */
@@ -259,7 +259,7 @@
       <a href="how-it-works.html" class="nav-link">How It Works</a>
       <a href="results.html"    class="nav-link">Results</a>
       <a href="make-a-payment.html" class="nav-link">Make a Payment</a>
-      <a href="#form" class="btn btn-primary" style="padding:10px 22px;font-size:13.5px">Get a Free Growth Review</a>
+      <a href="#form" class="btn btn-primary" style="padding:10px 22px;font-size:15px">Get a Free Growth Review</a>
       <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
     </div>
     <button id="ham-btn" aria-label="Menu" aria-expanded="false">
@@ -326,7 +326,7 @@
         </div>
       </div>
 
-      <p class="sr d5" style="font-size:13px;color:var(--text-3)">No pressure. Just clear, honest feedback.</p>
+      <p class="sr d5" style="font-size:14px;color:var(--text-3)">No pressure. Just clear, honest feedback.</p>
 
     </div>
   </div>
@@ -358,8 +358,11 @@
               <p style="font-size:16px;color:#71717a">Takes less than 2 minutes.</p>
             </div>
 
-            <!-- ⚠️ Replace action URL with your form handler (Formspree, etc.) -->
-            <form id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" novalidate>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="aafbc7c9-ba01-441b-ab59-bec5b4526e02"/>
+              <input type="hidden" name="subject" value="New Free Growth Review Request — CoreX Solutions"/>
+              <input type="hidden" name="from_name" value="CoreX Solutions Website"/>
+              <input type="hidden" name="redirect" value="https://noobiallc.github.io/corexsolutions/contact-us.html"/>
 
               <div style="display:flex;flex-direction:column;gap:20px">
 
@@ -435,24 +438,24 @@
             <div style="display:flex;align-items:flex-start;gap:14px">
               <div class="step-num">1</div>
               <div>
-                <p style="font-size:14px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We review your site</p>
-                <p style="font-size:13px;color:#71717a;line-height:1.65">We look at what might be stopping people from reaching out — the same way a potential customer would.</p>
+                <p style="font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We review your site</p>
+                <p style="font-size:15px;color:#71717a;line-height:1.65">We look at what might be stopping people from reaching out — the same way a potential customer would.</p>
               </div>
             </div>
 
             <div style="display:flex;align-items:flex-start;gap:14px">
               <div class="step-num">2</div>
               <div>
-                <p style="font-size:14px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We identify key issues</p>
-                <p style="font-size:13px;color:#71717a;line-height:1.65">We find where you may be losing calls, messages, or inquiries — and why.</p>
+                <p style="font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We identify key issues</p>
+                <p style="font-size:15px;color:#71717a;line-height:1.65">We find where you may be losing calls, messages, or inquiries — and why.</p>
               </div>
             </div>
 
             <div style="display:flex;align-items:flex-start;gap:14px">
               <div class="step-num">3</div>
               <div>
-                <p style="font-size:14px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We follow up with clear next steps</p>
-                <p style="font-size:13px;color:#71717a;line-height:1.65">You'll get practical recommendations on what to fix first — no jargon, no fluff.</p>
+                <p style="font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:5px">We follow up with clear next steps</p>
+                <p style="font-size:15px;color:#71717a;line-height:1.65">You'll get practical recommendations on what to fix first — no jargon, no fluff.</p>
               </div>
             </div>
 
@@ -466,7 +469,7 @@
           <div style="display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid rgba(0,0,0,.06)">
             <div style="width:34px;height:34px;border-radius:50%;background:var(--orange-lo);border:1px solid rgba(255,101,0,.2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--orange);flex-shrink:0">AB</div>
             <div>
-              <p style="font-size:13px;font-weight:700;color:#0a0a0a">Adrian Bobeanu</p>
+              <p style="font-size:14px;font-weight:700;color:#0a0a0a">Adrian Bobeanu</p>
               <p style="font-size:12px;color:#a1a1aa;margin-top:1px">Hardwood and Carpet Center</p>
             </div>
           </div>
