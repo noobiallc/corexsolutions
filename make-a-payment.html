@@ -57,22 +57,6 @@
     .divider-label span{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);white-space:nowrap}
     .divider-label::before,.divider-label::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.09)}
 
-    /* Payment type pills */
-    .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
-    .type-pill{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;cursor:pointer;transition:all .2s;user-select:none}
-    .type-pill:hover{border-color:rgba(255,101,0,.4);background:rgba(255,101,0,.03)}
-    .type-pill.selected{border-color:var(--orange);background:rgba(255,101,0,.06)}
-    .type-pill input[type=radio]{display:none}
-    .type-pill-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,0,0,.2);flex-shrink:0;transition:all .2s;position:relative}
-    .type-pill.selected .type-pill-dot{border-color:var(--orange);background:var(--orange)}
-    .type-pill.selected .type-pill-dot::after{content:'';position:absolute;inset:3px;background:#fff;border-radius:50%}
-    .type-pill-text{font-size:14px;font-weight:600;color:#0a0a0a}
-
-    /* Success */
-    #success{display:none;text-align:center;padding:48px 24px}
-    #success.show{display:block}
-    #pay-form.hide{display:none}
-
     /* Steps (left col) */
     .step-row{display:flex;gap:16px;align-items:flex-start}
     .step-num{width:32px;height:32px;border-radius:50%;background:var(--orange-lo);border:1px solid rgba(255,101,0,.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--orange);flex-shrink:0;margin-top:2px}
@@ -261,158 +245,80 @@
 
       </div><!-- end left -->
 
-      <!-- ── RIGHT: Form ── -->
+      <!-- ── RIGHT: Stripe Payment Card ── -->
       <div>
         <div class="form-card">
 
-          <!-- Success state -->
-          <div id="success">
-            <div style="width:60px;height:60px;border-radius:50%;background:rgba(255,101,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.01em;color:#0a0a0a;margin-bottom:8px">Ready to pay?</p>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7;margin-bottom:28px">Click the button below to complete your payment securely through Stripe. You'll enter your amount and card details on the next page.</p>
+
+          <!-- Accepted payment methods -->
+          <div style="margin-bottom:28px">
+            <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px">Accepted payment methods</p>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+
+              <!-- Visa -->
+              <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:52px;height:34px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 52 34" width="52" height="34" xmlns="http://www.w3.org/2000/svg">
+                  <text x="6" y="23" font-family="Arial Black,Arial,sans-serif" font-size="15" font-weight="900" font-style="italic" fill="#1A1F71">VISA</text>
+                </svg>
+              </div>
+
+              <!-- Mastercard -->
+              <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:52px;height:34px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 38 24" width="38" height="24" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="14" cy="12" r="11" fill="#EB001B"/>
+                  <circle cx="24" cy="12" r="11" fill="#F79E1B" fill-opacity=".9"/>
+                  <path d="M19 3.8a11 11 0 0 1 0 16.4A11 11 0 0 1 19 3.8z" fill="#FF5F00"/>
+                </svg>
+              </div>
+
+              <!-- Apple Pay -->
+              <div style="background:#000;border:1.5px solid #000;border-radius:6px;width:62px;height:34px;display:flex;align-items:center;justify-content:center;gap:4px">
+                <svg viewBox="0 0 14 17" width="12" height="14" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.5 2.1c.63-.77 1.05-1.81.92-2.91-.88.04-1.96.59-2.6 1.35-.57.66-1.07 1.73-.93 2.75.97.08 1.97-.49 2.61-1.19zM12.4 3.6c-1.44-.08-2.66.82-3.35.82-.68 0-1.73-.78-2.86-.76-1.47.02-2.83.86-3.58 2.18-1.53 2.65-.39 6.59 1.1 8.75.73 1.05 1.6 2.23 2.75 2.19 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.67-2.13.84-1.22 1.19-2.4 1.21-2.46-.03-.01-2.4-.94-2.41-3.53-.02-2.18 1.78-3.22 1.87-3.28-1.02-1.49-2.6-1.69-3.12-1.76z"/>
+                </svg>
+                <span style="font-size:12px;font-weight:600;color:#fff;letter-spacing:-.2px">Pay</span>
+              </div>
+
+              <!-- Stripe badge -->
+              <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:62px;height:34px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 60 25" width="44" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#635BFF" d="M30.1 11.3c0-3-1.5-5.4-4.3-5.4-2.9 0-4.6 2.4-4.6 5.3 0 3.5 2 5.3 4.8 5.3 1.4 0 2.4-.3 3.2-.8v-2.4c-.8.4-1.7.7-2.8.7-1.1 0-2.1-.4-2.2-1.8h5.8c0-.2.1-.7.1-1zm-5.8-.9c0-1.3.8-1.9 1.5-1.9s1.4.6 1.4 1.9h-2.9zm-5.6-4.5c-1.1 0-1.8.5-2.2 1l-.1-.9h-2.6v13.5l2.9-.6v-3.3c.4.3 1 .7 2 .7 2 0 3.9-1.6 3.9-5.2-.1-3.3-2-5.2-3.9-5.2zm-.7 8c-.7 0-1.1-.2-1.4-.6V9.5c.3-.4.8-.6 1.4-.6 1.1 0 1.8 1.2 1.8 2.9 0 1.8-.7 3.1-1.8 3.1zm-8.1-9.2l2.9-.6V1.3l-2.9.6v2.8zm0 1h2.9v10.1H9.9V5.7zm-4.4.9V5.7H2.6v10.1h2.9v-5.1c.7-.9 1.8-.7 2.1-.6V5.7c-.4-.1-1.6-.3-2.1.9zm31.7-.9l-2.9.6v10.5l2.9-.6V5.7zm0-4.4l-2.9.6v2.3l2.9-.6V1.3zm5.6 6.8V5.7h-2.9v10.1h2.9v-5c0-1.3.9-1.8 2.3-1.8h.3V5.6c-1.3 0-2.1.6-2.6 2.5z"/>
+                </svg>
+              </div>
+
             </div>
-            <h2 style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:22px;font-weight:800;margin-bottom:10px">Payment Received</h2>
-            <p style="font-size:15px;color:var(--text-2);line-height:1.7;max-width:340px;margin:0 auto 24px">Thank you — we've received your payment. You'll get a confirmation at the email address you provided.</p>
-            <p style="font-size:13px;color:var(--text-3)">Questions? Call us at <a href="tel:+16788358150" style="color:var(--orange)">(678) 835-8150</a></p>
           </div>
 
-          <!-- Payment form -->
-          <form id="pay-form" action="https://formspree.io/f/REPLACE_WITH_PAYMENT_FORM_ID" method="POST">
+          <!-- Divider -->
+          <div class="divider-label" style="margin:0 0 24px"><span>Secure checkout</span></div>
 
-            <p style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.01em;color:#0a0a0a;margin-bottom:24px">Payment details</p>
+          <!-- Pay Now CTA -->
+          <a href="https://buy.stripe.com/eVq00i8ip6Gu31b7Vw4AU00" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:16px;padding:17px 28px;letter-spacing:-.01em">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            Pay Now
+          </a>
 
-            <!-- Payment type -->
-            <div class="form-group">
-              <label>Payment type <span class="req">*</span></label>
-              <div class="type-grid">
-                <label class="type-pill selected" id="pill-invoice">
-                  <input type="radio" name="payment_type" value="Invoice Payment" checked/>
-                  <div class="type-pill-dot"></div>
-                  <span class="type-pill-text">Invoice Payment</span>
-                </label>
-                <label class="type-pill" id="pill-deposit">
-                  <input type="radio" name="payment_type" value="Deposit"/>
-                  <div class="type-pill-dot"></div>
-                  <span class="type-pill-text">Deposit</span>
-                </label>
-                <label class="type-pill" id="pill-partial">
-                  <input type="radio" name="payment_type" value="Partial Payment"/>
-                  <div class="type-pill-dot"></div>
-                  <span class="type-pill-text">Partial Payment</span>
-                </label>
-                <label class="type-pill" id="pill-other">
-                  <input type="radio" name="payment_type" value="Other"/>
-                  <div class="type-pill-dot"></div>
-                  <span class="type-pill-text">Other</span>
-                </label>
-              </div>
+          <!-- Stripe secured + micro trust -->
+          <div style="margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:10px">
+            <a href="https://stripe.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#635BFF'" onmouseout="this.style.color='var(--text-3)'">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Secured by
+              <svg viewBox="0 0 60 25" width="30" height="12" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M30.1 11.3c0-3-1.5-5.4-4.3-5.4-2.9 0-4.6 2.4-4.6 5.3 0 3.5 2 5.3 4.8 5.3 1.4 0 2.4-.3 3.2-.8v-2.4c-.8.4-1.7.7-2.8.7-1.1 0-2.1-.4-2.2-1.8h5.8c0-.2.1-.7.1-1zm-5.8-.9c0-1.3.8-1.9 1.5-1.9s1.4.6 1.4 1.9h-2.9zm-5.6-4.5c-1.1 0-1.8.5-2.2 1l-.1-.9h-2.6v13.5l2.9-.6v-3.3c.4.3 1 .7 2 .7 2 0 3.9-1.6 3.9-5.2-.1-3.3-2-5.2-3.9-5.2zm-.7 8c-.7 0-1.1-.2-1.4-.6V9.5c.3-.4.8-.6 1.4-.6 1.1 0 1.8 1.2 1.8 2.9 0 1.8-.7 3.1-1.8 3.1zm-8.1-9.2l2.9-.6V1.3l-2.9.6v2.8zm0 1h2.9v10.1H9.9V5.7zm-4.4.9V5.7H2.6v10.1h2.9v-5.1c.7-.9 1.8-.7 2.1-.6V5.7c-.4-.1-1.6-.3-2.1.9zm31.7-.9l-2.9.6v10.5l2.9-.6V5.7zm0-4.4l-2.9.6v2.3l2.9-.6V1.3zm5.6 6.8V5.7h-2.9v10.1h2.9v-5c0-1.3.9-1.8 2.3-1.8h.3V5.6c-1.3 0-2.1.6-2.6 2.5z"/></svg>
+            </a>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center">
+              <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Confirmation emailed
+              </span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Processed same day
+              </span>
             </div>
+          </div>
 
-            <!-- Amount -->
-            <div class="form-group">
-              <label for="amount">Amount <span class="req">*</span></label>
-              <div class="amount-wrap">
-                <span class="currency" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:16px;font-weight:600;color:#52525b;pointer-events:none">$</span>
-                <input type="number" id="amount" name="amount" placeholder="0.00" min="1" step="0.01" required/>
-              </div>
-            </div>
-
-            <!-- Invoice / reference -->
-            <div class="form-group">
-              <label for="invoice_ref">Invoice or reference number <span class="opt">(if applicable)</span></label>
-              <input type="text" id="invoice_ref" name="invoice_reference" placeholder="e.g. INV-2026-001"/>
-            </div>
-
-            <div class="divider-label"><span>Your information</span></div>
-
-            <!-- Name -->
-            <div class="form-group">
-              <label for="name">Full name <span class="req">*</span></label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required/>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-              <label for="email">Email address <span class="req">*</span></label>
-              <input type="email" id="email" name="email" placeholder="john@example.com" required/>
-            </div>
-
-            <!-- Phone -->
-            <div class="form-group">
-              <label for="phone">Phone number <span class="opt">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="(678) 555-0100"/>
-            </div>
-
-            <!-- Note -->
-            <div class="form-group">
-              <label for="note">Note <span class="opt">(optional)</span></label>
-              <textarea id="note" name="note" rows="3" placeholder="Any additional details about this payment..." style="resize:vertical"></textarea>
-            </div>
-
-            <!-- Accepted payment methods -->
-            <div style="margin:4px 0 20px">
-              <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px">Accepted payment methods</p>
-              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-
-                <!-- Visa -->
-                <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:52px;height:34px;display:flex;align-items:center;justify-content:center">
-                  <svg viewBox="0 0 52 34" width="52" height="34" xmlns="http://www.w3.org/2000/svg">
-                    <text x="6" y="23" font-family="Arial Black,Arial,sans-serif" font-size="15" font-weight="900" font-style="italic" fill="#1A1F71">VISA</text>
-                  </svg>
-                </div>
-
-                <!-- Mastercard -->
-                <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:52px;height:34px;display:flex;align-items:center;justify-content:center">
-                  <svg viewBox="0 0 38 24" width="38" height="24" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="14" cy="12" r="11" fill="#EB001B"/>
-                    <circle cx="24" cy="12" r="11" fill="#F79E1B" fill-opacity=".9"/>
-                    <path d="M19 3.8a11 11 0 0 1 0 16.4A11 11 0 0 1 19 3.8z" fill="#FF5F00"/>
-                  </svg>
-                </div>
-
-                <!-- Apple Pay -->
-                <div style="background:#000;border:1.5px solid #000;border-radius:6px;width:62px;height:34px;display:flex;align-items:center;justify-content:center;gap:4px">
-                  <svg viewBox="0 0 14 17" width="12" height="14" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.5 2.1c.63-.77 1.05-1.81.92-2.91-.88.04-1.96.59-2.6 1.35-.57.66-1.07 1.73-.93 2.75.97.08 1.97-.49 2.61-1.19zM12.4 3.6c-1.44-.08-2.66.82-3.35.82-.68 0-1.73-.78-2.86-.76-1.47.02-2.83.86-3.58 2.18-1.53 2.65-.39 6.59 1.1 8.75.73 1.05 1.6 2.23 2.75 2.19 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.67-2.13.84-1.22 1.19-2.4 1.21-2.46-.03-.01-2.4-.94-2.41-3.53-.02-2.18 1.78-3.22 1.87-3.28-1.02-1.49-2.6-1.69-3.12-1.76z"/>
-                  </svg>
-                  <span style="font-size:12px;font-weight:600;color:#fff;letter-spacing:-.2px">Pay</span>
-                </div>
-
-                <!-- Stripe badge -->
-                <div style="background:#fff;border:1.5px solid #e4e4e7;border-radius:6px;width:62px;height:34px;display:flex;align-items:center;justify-content:center;gap:4px">
-                  <svg viewBox="0 0 60 25" width="44" height="18" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#635BFF" d="M30.1 11.3c0-3-1.5-5.4-4.3-5.4-2.9 0-4.6 2.4-4.6 5.3 0 3.5 2 5.3 4.8 5.3 1.4 0 2.4-.3 3.2-.8v-2.4c-.8.4-1.7.7-2.8.7-1.1 0-2.1-.4-2.2-1.8h5.8c0-.2.1-.7.1-1zm-5.8-.9c0-1.3.8-1.9 1.5-1.9s1.4.6 1.4 1.9h-2.9zm-5.6-4.5c-1.1 0-1.8.5-2.2 1l-.1-.9h-2.6v13.5l2.9-.6v-3.3c.4.3 1 .7 2 .7 2 0 3.9-1.6 3.9-5.2-.1-3.3-2-5.2-3.9-5.2zm-.7 8c-.7 0-1.1-.2-1.4-.6V9.5c.3-.4.8-.6 1.4-.6 1.1 0 1.8 1.2 1.8 2.9 0 1.8-.7 3.1-1.8 3.1zm-8.1-9.2l2.9-.6V1.3l-2.9.6v2.8zm0 1h2.9v10.1H9.9V5.7zm-4.4.9V5.7H2.6v10.1h2.9v-5.1c.7-.9 1.8-.7 2.1-.6V5.7c-.4-.1-1.6-.3-2.1.9zm31.7-.9l-2.9.6v10.5l2.9-.6V5.7zm0-4.4l-2.9.6v2.3l2.9-.6V1.3zm5.6 6.8V5.7h-2.9v10.1h2.9v-5c0-1.3.9-1.8 2.3-1.8h.3V5.6c-1.3 0-2.1.6-2.6 2.5z"/>
-                  </svg>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Submit -->
-            <button type="submit" class="btn btn-primary" style="margin-top:4px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-              Submit Payment
-            </button>
-
-            <!-- Stripe secured + micro trust -->
-            <div style="margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:10px">
-              <a href="https://stripe.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#635BFF'" onmouseout="this.style.color='var(--text-3)'">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Secured by
-                <svg viewBox="0 0 60 25" width="30" height="12" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M30.1 11.3c0-3-1.5-5.4-4.3-5.4-2.9 0-4.6 2.4-4.6 5.3 0 3.5 2 5.3 4.8 5.3 1.4 0 2.4-.3 3.2-.8v-2.4c-.8.4-1.7.7-2.8.7-1.1 0-2.1-.4-2.2-1.8h5.8c0-.2.1-.7.1-1zm-5.8-.9c0-1.3.8-1.9 1.5-1.9s1.4.6 1.4 1.9h-2.9zm-5.6-4.5c-1.1 0-1.8.5-2.2 1l-.1-.9h-2.6v13.5l2.9-.6v-3.3c.4.3 1 .7 2 .7 2 0 3.9-1.6 3.9-5.2-.1-3.3-2-5.2-3.9-5.2zm-.7 8c-.7 0-1.1-.2-1.4-.6V9.5c.3-.4.8-.6 1.4-.6 1.1 0 1.8 1.2 1.8 2.9 0 1.8-.7 3.1-1.8 3.1zm-8.1-9.2l2.9-.6V1.3l-2.9.6v2.8zm0 1h2.9v10.1H9.9V5.7zm-4.4.9V5.7H2.6v10.1h2.9v-5.1c.7-.9 1.8-.7 2.1-.6V5.7c-.4-.1-1.6-.3-2.1.9zm31.7-.9l-2.9.6v10.5l2.9-.6V5.7zm0-4.4l-2.9.6v2.3l2.9-.6V1.3zm5.6 6.8V5.7h-2.9v10.1h2.9v-5c0-1.3.9-1.8 2.3-1.8h.3V5.6c-1.3 0-2.1.6-2.6 2.5z"/></svg>
-              </a>
-              <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center">
-                <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3)">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Confirmation emailed
-                </span>
-                <span style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3)">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                  Processed same day
-                </span>
-              </div>
-            </div>
-
-          </form>
         </div>
       </div><!-- end right -->
 
@@ -507,43 +413,6 @@
 
 <!-- ══ SCRIPTS ════════════════════════════════════════════════════════════════ -->
 <script>
-// Payment type pills
-document.querySelectorAll('.type-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelectorAll('.type-pill').forEach(p => p.classList.remove('selected'));
-    pill.classList.add('selected');
-  });
-});
-
-// Form submission
-const form = document.getElementById('pay-form');
-const success = document.getElementById('success');
-form.addEventListener('submit', async e => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type=submit]');
-  btn.textContent = 'Processing...';
-  btn.disabled = true;
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
-    if (res.ok) {
-      form.classList.add('hide');
-      success.classList.add('show');
-    } else {
-      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> Submit Payment';
-      btn.disabled = false;
-      alert('Something went wrong. Please call us at (678) 835-8150 or email info@corexsolutions.net');
-    }
-  } catch {
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> Submit Payment';
-    btn.disabled = false;
-    alert('Something went wrong. Please call us at (678) 835-8150 or email info@corexsolutions.net');
-  }
-});
-
 // Payment FAQ accordion
 document.querySelectorAll('.pfaq-btn').forEach(btn => {
   btn.addEventListener('click', () => {
