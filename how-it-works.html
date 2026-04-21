@@ -397,9 +397,9 @@
       <p style="font-size:12px;color:#9898a2">© 2026 CoreX Solutions. All rights reserved.</p>
       <div style="display:flex;gap:20px">
         <a href="make-a-payment.html" style="font-size:12px;color:#9898a2">Make a Payment</a>
-        <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
         <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
         <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
+        <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
       </div>
     </div>
   </div>
@@ -419,17 +419,26 @@ const hamBtn = document.getElementById('ham-btn');
 const icoOpen = document.getElementById('ico-open');
 const icoClose = document.getElementById('ico-close');
 const mobNav = document.getElementById('mob-nav');
-hamBtn.addEventListener('click', () => {
-  const open = mobNav.classList.toggle('open');
-  icoOpen.style.display = open ? 'none' : 'block';
-  icoClose.style.display = open ? 'block' : 'none';
-  hamBtn.setAttribute('aria-expanded', open);
+let mOpen = false;
+function closeNav(){
+  mOpen=false;mobNav.classList.remove('open');
+  icoOpen.style.display='block';icoClose.style.display='none';
+  hamBtn.setAttribute('aria-expanded','false');
+}
+hamBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  mOpen = !mOpen;
+  mobNav.classList.toggle('open', mOpen);
+  icoOpen.style.display = mOpen ? 'none' : 'block';
+  icoClose.style.display = mOpen ? 'block' : 'none';
+  hamBtn.setAttribute('aria-expanded', mOpen);
+});
+mobNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+const navEl = document.getElementById('nav');
+document.addEventListener('click', e => {
+  if(mOpen && !navEl.contains(e.target)) closeNav();
 });
 
-// Mobile sticky bar
-window.addEventListener('scroll', () => {
-  if(mobSticky) mobSticky.classList.toggle('show', scrollY > 400);
-}, {passive:true});
 
 // FAQ accordion
 document.querySelectorAll('.faq-btn').forEach(btn => {

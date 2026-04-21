@@ -334,9 +334,9 @@
       <p style="font-size:12px;color:#9898a2">© 2026 CoreX Solutions. All rights reserved.</p>
       <div style="display:flex;gap:20px">
         <a href="make-a-payment.html" style="font-size:12px;color:#9898a2">Make a Payment</a>
-        <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
         <a href="privacy-policy.html" style="font-size:12px;color:#9898a2">Privacy Policy</a>
         <a href="terms-and-conditions.html" style="font-size:12px;color:#9898a2">Terms</a>
+        <a href="sitemap.html" style="font-size:12px;color:#9898a2">Site Map</a>
       </div>
     </div>
   </div>
@@ -369,10 +369,6 @@ hamBtn.addEventListener('click', () => {
   hamBtn.setAttribute('aria-expanded', open);
 });
 
-// Mobile sticky bar
-window.addEventListener('scroll', () => {
-  if(mobSticky) mobSticky.classList.toggle('show', scrollY > 400);
-}, {passive:true});
 
 // Cookie banner
 (function(){

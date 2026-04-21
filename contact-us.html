@@ -581,7 +581,16 @@ hamBtn.addEventListener('click',()=>{
 mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mOpen=false;mobNav.classList.remove('open');
   icoO.style.display='block';icoC.style.display='none';
+  hamBtn.setAttribute('aria-expanded','false');
 }));
+const navEl=document.getElementById('nav');
+document.addEventListener('click',e=>{
+  if(mOpen&&!navEl.contains(e.target)){
+    mOpen=false;mobNav.classList.remove('open');
+    icoO.style.display='block';icoC.style.display='none';
+    hamBtn.setAttribute('aria-expanded','false');
+  }
+});
 
 
 // ── Cookie banner ──────────────────────────────────────────────────────────────
