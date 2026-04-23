@@ -75,19 +75,19 @@
     .d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.22s}.d4{animation-delay:.32s}.d5{animation-delay:.42s}.d6{animation-delay:.54s}
 
     /* ── Nav ── */
-    #nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
     .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
     @media(max-width:768px){.nav-inner{padding:0 20px}}
-    .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#fff}
+    .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
     .nav-links{display:flex;align-items:center;gap:28px}
-    .nav-link{font-size:15px;font-weight:500;color:var(--text-3);transition:color .2s}
-    .nav-link:hover{color:#fff}
-    .nav-link.active{color:#fff;font-weight:600}
+    .nav-link{font-size:15px;font-weight:500;color:#52525b;transition:color .2s}
+    .nav-link:hover,.nav-link.active{color:#0a0a0a}
+    .nav-link.active{font-weight:600}
     #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
-    #mob-nav{display:none;border-top:1px solid rgba(255,255,255,.07);background:rgba(10,10,10,.97);max-height:0;overflow:hidden;transition:max-height .35s ease}
+    #mob-nav{display:none;border-top:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.97);max-height:0;overflow:hidden;transition:max-height .35s ease}
     #mob-nav.open{max-height:320px}
     .mob-links{padding:16px 20px;display:flex;flex-direction:column;gap:4px}
-    .mob-link{padding:10px 0;font-size:16px;color:var(--text-3);border-bottom:1px solid rgba(255,255,255,.07)}
+    .mob-link{padding:10px 0;font-size:16px;color:#52525b;border-bottom:1px solid rgba(0,0,0,.07)}
     @media(max-width:860px){.nav-links{display:none}#ham-btn{display:block}#mob-nav{display:block}}
 
     /* ── Buttons ── */
@@ -109,7 +109,7 @@
 
     /* ── Category filters ── */
     .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .filter-btn{display:inline-flex;align-items:center;padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:var(--text-3);transition:all .2s ease}
+    .filter-btn{display:inline-flex;align-items:center;padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(0,0,0,.1);background:rgba(0,0,0,.04);color:#6b7280;transition:all .2s ease}
     .filter-btn:hover{border-color:rgba(255,101,0,.4);color:var(--orange)}
     .filter-btn.active{background:var(--orange-lo);border-color:rgba(255,101,0,.3);color:var(--orange)}
 
@@ -191,11 +191,11 @@
       <a href="results.html" class="nav-link">Results</a>
       <a href="insights.html" class="nav-link active">Insights</a>
       <a href="contact-us.html" class="btn btn-primary" style="padding:10px 22px;font-size:15px">Get a Free Growth Review</a>
-      <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#fff">(678) 835-8150</a>
+      <a href="tel:+16788358150" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
     </div>
     <button id="ham-btn" aria-label="Menu" aria-expanded="false">
-      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <div id="mob-nav">
@@ -204,9 +204,9 @@
       <a href="about.html" class="mob-link">About</a>
       <a href="how-it-works.html" class="mob-link">How It Works</a>
       <a href="results.html" class="mob-link">Results</a>
-      <a href="insights.html" class="mob-link" style="color:#fff;font-weight:600">Insights</a>
+      <a href="insights.html" class="mob-link" style="color:#0a0a0a;font-weight:600">Insights</a>
       <a href="contact-us.html" class="btn btn-primary" style="margin-top:12px;justify-content:center">Get a Free Growth Review</a>
-      <a href="tel:+16788358150" class="mob-link" style="font-weight:600;color:#fff;text-align:center">(678) 835-8150</a>
+      <a href="tel:+16788358150" class="mob-link" style="font-weight:600;color:#0a0a0a;text-align:center">(678) 835-8150</a>
     </div>
   </div>
 </nav>
@@ -231,7 +231,7 @@
 
 
 <!-- ══ FEATURED ARTICLE ══════════════════════════════════════════════════════ -->
-<section style="padding:0 0 56px">
+<section style="padding:0 0 56px;background:#fff">
   <div class="wrap">
     <a href="insight-lose-leads.html" class="featured-card sr">
       <div class="feat-img">
@@ -259,13 +259,13 @@
 
 
 <!-- ══ ARTICLE GRID ══════════════════════════════════════════════════════════ -->
-<section class="section" style="padding-top:0">
+<section class="section" style="padding-top:0;background:#f4f4f5">
   <div class="wrap">
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
       <div>
-        <p class="section-label sr">All Articles</p>
-        <h2 class="section-title sr d1">More from <em class="grad-it">CoreX</em></h2>
+        <p class="section-label sr" style="color:#71717a">All Articles</p>
+        <h2 class="section-title sr d1" style="color:#0a0a0a">More from <em class="grad-it">CoreX</em></h2>
       </div>
       <div class="filters sr d2">
         <button class="filter-btn active" onclick="filterCards(this,'all')">All</button>
