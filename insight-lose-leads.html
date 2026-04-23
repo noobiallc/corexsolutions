@@ -94,23 +94,12 @@
     .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
     .pill-orange{background:var(--orange-lo);border:1px solid rgba(255,101,0,.25);color:var(--orange)}
 
-    /* Article hero — title overlays image */
-    .article-hero{padding-top:62px;position:relative}
-    .hero-img-wrap{height:clamp(420px,52vw,620px);position:relative;overflow:hidden}
-    .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
-    .hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.25) 0%,rgba(10,10,10,0.55) 45%,rgba(10,10,10,0.92) 75%,#0a0a0a 100%)}
-    .hero-content{position:absolute;inset:0;display:flex;align-items:center;padding:0}
-    .hero-content .wrap{width:100%}
-
-    /* Breadcrumb */
-    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.5);flex-wrap:wrap}
-    .breadcrumb a{color:rgba(255,255,255,.5);transition:color .2s}
-    .breadcrumb a:hover{color:#fff}
-    .breadcrumb span{color:rgba(255,255,255,.2)}
-
     /* Article meta */
     .article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-    .meta-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2)}
+    .meta-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+    /* Featured image inside prose */
+    .featured-img{width:100%;border-radius:12px;margin-bottom:40px;object-fit:cover;max-height:400px;display:block}
 
     /* Article body — light section */
     .article-body{background:#fff;color:#0a0a0a}
@@ -201,37 +190,31 @@
 </nav>
 
 <!-- ══ HERO ═══════════════════════════════════════════════════════════════════ -->
-<div class="article-hero">
-  <div class="hero-img-wrap">
-    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1600&q=80" alt="Service business owner" loading="eager"/>
-    <div class="hero-content">
-      <div class="wrap">
-        <div style="max-width:720px;margin:0 auto">
-          <div style="margin-bottom:14px">
-            <span class="pill pill-orange">Lead Generation</span>
-          </div>
-          <h1 style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;color:#fff">
-            Why Service Businesses Lose Leads<br/>Before the <em class="grad-it">First Call</em>
-          </h1>
-          <div class="article-meta">
-            <span style="font-size:14px;color:rgba(255,255,255,.6)">By Cris L., CoreX Solutions</span>
-            <div class="meta-dot"></div>
-            <span style="font-size:14px;color:rgba(255,255,255,.6)">April 23, 2026</span>
-            <div class="meta-dot"></div>
-            <span style="font-size:14px;color:rgba(255,255,255,.6)">5 min read</span>
-          </div>
-        </div>
+<section style="padding-top:clamp(100px,10vw,140px);padding-bottom:clamp(64px,6vw,96px);background:var(--bg);position:relative;overflow:hidden" class="noise">
+  <div class="orb" style="width:700px;height:500px;background:rgba(255,101,0,.09);top:-80px;right:-100px"></div>
+  <div class="orb" style="width:500px;height:400px;background:rgba(255,101,0,.06);bottom:-60px;left:-60px"></div>
+  <div class="wrap" style="position:relative">
+    <div style="max-width:720px">
+      <div class="sr" style="margin-bottom:16px"><span class="pill pill-orange">Lead Generation</span></div>
+      <h1 class="sr d1" style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(32px,4vw,54px);font-weight:800;line-height:1.06;letter-spacing:-.025em;color:#fff;margin-bottom:24px">
+        Why Service Businesses Lose Leads<br/>Before the <em class="grad-it">First Call</em>
+      </h1>
+      <div class="article-meta sr d2">
+        <span style="font-size:15px;color:var(--text-3)">By Cris L., CoreX Solutions</span>
+        <div class="meta-dot"></div>
+        <span style="font-size:15px;color:var(--text-3)">April 23, 2026</span>
+        <div class="meta-dot"></div>
+        <span style="font-size:15px;color:var(--text-3)">5 min read</span>
       </div>
     </div>
   </div>
-</div>
-
-<!-- dark strip that connects hero to article body -->
-<div style="background:#0a0a0a;height:40px;margin-top:-1px"></div>
+</section>
 
 <!-- ══ ARTICLE BODY ══════════════════════════════════════════════════════════ -->
 <div class="article-body">
   <div class="prose">
+
+    <img class="featured-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80" alt="Service business owner" loading="eager"/>
 
     <p>There's a version of your business that's losing customers every single week — and you'll never know it happened. No phone call that was ignored. No message that went unanswered. Just a potential customer who searched for exactly what you offer, found your website, looked around for about 30 seconds, and then called someone else.</p>
 
