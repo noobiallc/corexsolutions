@@ -101,6 +101,29 @@
     /* Featured image */
     .featured-img{width:100%;border-radius:12px;margin-bottom:40px;aspect-ratio:16/9;object-fit:cover;object-position:center;display:block}
 
+    /* Chat mockup */
+    .chat-mockup{width:100%;border-radius:12px;margin-bottom:40px;background:#0d0d0d;overflow:hidden;border:1px solid rgba(255,101,0,.22);box-shadow:0 8px 40px rgba(0,0,0,.18)}
+    .chat-header{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;background:#111}
+    .chat-logo{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;color:#fff;letter-spacing:-.02em}
+    .chat-logo span{color:#ff6500}
+    .chat-status{display:flex;align-items:center;gap:6px;font-size:12px;color:#9898a2;font-weight:500}
+    .chat-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0}
+    .chat-messages{padding:20px 24px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(160deg,#0f0f0f 0%,#130a00 100%)}
+    .chat-msg{display:flex;flex-direction:column;max-width:72%}
+    .chat-msg.customer{align-self:flex-start;align-items:flex-start}
+    .chat-msg.ai{align-self:flex-end;align-items:flex-end}
+    .msg-from{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#52525b;margin-bottom:5px}
+    .chat-msg.ai .msg-from{color:rgba(255,101,0,.7)}
+    .msg-bubble{padding:11px 15px;font-size:14px;line-height:1.55;font-family:'Inter',sans-serif;font-weight:400}
+    .chat-msg.customer .msg-bubble{background:#fff;color:#111;border-radius:4px 14px 14px 14px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .chat-msg.ai .msg-bubble{background:rgba(255,101,0,.13);border:1px solid rgba(255,101,0,.28);color:#fff;border-radius:14px 4px 14px 14px}
+    .msg-time{font-size:10px;color:#52525b;margin-top:4px;font-weight:500}
+    .chat-footer{padding:10px 24px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:flex-end;gap:6px;background:#111}
+    .chat-footer-text{font-size:11px;color:#52525b;font-family:'Inter',sans-serif}
+    .chat-footer-logo{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:12px;color:#9898a2;letter-spacing:-.01em}
+    .chat-footer-logo span{color:#ff6500}
+    @media(max-width:480px){.chat-msg{max-width:85%}.msg-bubble{font-size:13px}}
+
     /* Article body — light section */
     .article-body{background:#fff;color:#0a0a0a}
     .prose{max-width:720px;margin:0 auto;padding:64px 32px}
@@ -219,7 +242,45 @@
 <div class="article-body">
   <div class="prose">
 
-    <img class="featured-img" src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=1400&q=80" alt="Small business owner at laptop" loading="eager"/>
+    <div class="chat-mockup">
+      <div class="chat-header">
+        <div class="chat-logo">CoreX<span>.</span></div>
+        <div class="chat-status">AI Assistant · Active on your website</div>
+      </div>
+      <div class="chat-messages">
+        <div class="chat-msg customer">
+          <div class="msg-from">Homeowner · 10:14 AM</div>
+          <div class="msg-bubble">Hi, my AC stopped working this morning. Can someone come out today?</div>
+        </div>
+        <div class="chat-msg ai">
+          <div class="msg-from">CoreX AI Assistant</div>
+          <div class="msg-bubble">Hi! We can definitely help with that. We have HVAC technicians available today. What city are you in?</div>
+          <div class="msg-time">10:14 AM</div>
+        </div>
+        <div class="chat-msg customer">
+          <div class="msg-from">Homeowner · 10:15 AM</div>
+          <div class="msg-bubble">Peachtree Corners, GA.</div>
+        </div>
+        <div class="chat-msg ai">
+          <div class="msg-from">CoreX AI Assistant</div>
+          <div class="msg-bubble">Perfect — we have a 2:30 PM slot open today. Can I get your address to confirm the appointment?</div>
+          <div class="msg-time">10:15 AM</div>
+        </div>
+        <div class="chat-msg customer">
+          <div class="msg-from">Homeowner · 10:15 AM</div>
+          <div class="msg-bubble">Sure, 247 Medlock Bridge Rd.</div>
+        </div>
+        <div class="chat-msg ai">
+          <div class="msg-from">CoreX AI Assistant</div>
+          <div class="msg-bubble">Got it. Your appointment is confirmed for 2:30 PM today. You'll receive a confirmation text shortly. ✓</div>
+          <div class="msg-time">10:16 AM</div>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <span class="chat-footer-text">Powered by</span>
+        <span class="chat-footer-logo">CoreX<span>.</span></span>
+      </div>
+    </div>
 
     <p>Most small business websites have the same quiet problem: visitors arrive, browse for a minute, and leave without ever reaching out. Not because they weren't interested. Because they had a question and no one was there to answer it.</p>
 
@@ -322,7 +383,7 @@
     <h2 class="sr d1" style="font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.02em;margin-bottom:32px">More from <em class="grad-it">CoreX Insights</em></h2>
     <div class="related-grid sr d2">
       <a href="insight-lose-leads.html" class="rel-card">
-        <div class="rel-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80" alt="Business owner checking leads" loading="lazy"/></div>
+        <div class="rel-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Service business owner" loading="lazy"/></div>
         <div class="rel-body">
           <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Lead Generation</p>
           <h3 class="rel-title">Why Service Businesses Lose Leads Before the First Call</h3>
