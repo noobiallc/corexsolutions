@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>CoreX — Facebook Post #1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#111;font-family:'Inter',sans-serif;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:40px}
+    h2{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#52525b}
+
+    /* ── Post image preview ── */
+    canvas{border-radius:10px;box-shadow:0 32px 80px rgba(0,0,0,.8);max-width:560px;width:100%;height:auto}
+
+    /* ── Copy card ── */
+    .copy-card{background:#161616;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:36px 40px;max-width:680px;width:100%}
+    .copy-card h3{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#52525b;margin-bottom:24px}
+    .post-copy{font-size:16px;line-height:1.9;color:#c4c4cc;white-space:pre-wrap;font-family:'Inter',sans-serif}
+    .post-copy .hook{font-size:20px;font-weight:800;color:#ffffff;font-family:'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.01em}
+    .post-copy .cta{color:#ff6500;font-weight:600}
+
+    /* ── Actions ── */
+    .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{font-family:'Inter',sans-serif;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;border:none;cursor:pointer;transition:background .2s;text-decoration:none}
+    .btn-primary{background:#ff6500;color:#fff}
+    .btn-primary:hover{background:#e85c00}
+    .btn-ghost{background:rgba(255,255,255,.06);color:#c4c4cc;border:1px solid rgba(255,255,255,.1)}
+    .btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+    .note{font-size:12px;color:#52525b;max-width:560px;text-align:center;line-height:1.7}
+    .note strong{color:#9898a2}
+    hr{border:none;border-top:1px solid rgba(255,255,255,.05);width:100%;max-width:680px}
+  </style>
+</head>
+<body>
+
+  <h2>Facebook Post · Image Graphic</h2>
+  <canvas id="cv" width="2160" height="2160"></canvas>
+  <div class="actions">
+    <button class="btn btn-primary" id="dl-img">Download Post Image</button>
+  </div>
+
+  <hr/>
+
+  <h2>Facebook Post · Copy</h2>
+  <div class="copy-card">
+    <h3>Paste this into Facebook</h3>
+    <div class="post-copy" id="copy-text">
+<span class="hook">You lost a customer this week.</span>
+
+Not because your work was bad.
+Not because your prices were too high.
+Not because they didn't need you.
+
+They searched. They found your website. They looked around for about 30 seconds — and then they called someone else.
+
+Here's what usually gets in the way:
+
+→ They couldn't figure out what you do from the homepage
+→ Your phone number wasn't easy to find
+→ The site looked outdated and they weren't sure they could trust you
+→ They filled out a form and never heard back
+
+None of that is about the quality of your work. It's about what they see before they ever talk to you.
+
+That's the gap we close at CoreX Solutions.
+
+We look at your business the way a customer does — from the moment they search for you to the moment they decide whether to pick up the phone — and we show you exactly what's getting in the way.
+
+Free review. No commitment. Just honest feedback.
+
+<span class="cta">👉 www.corexsolutions.net</span>
+
+#ServiceBusiness #HVAC #Roofing #Contractor #LocalBusiness #MoreLeads #SmallBusiness</div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-ghost" id="copy-btn">Copy Post Text</button>
+  </div>
+  <p class="note">
+    <strong>Posting tip:</strong> Upload the image first, then paste the copy. Post between Tuesday–Thursday, 7–9am or 6–8pm local time for best reach with service business owners.
+  </p>
+
+  <script>
+    // ── Canvas setup ───────────────────────────────────────────────────────
+    const S = 2160;
+    const cv = document.getElementById('cv');
+    const ctx = cv.getContext('2d');
+
+    document.fonts.ready.then(draw);
+
+    function draw() {
+      ctx.clearRect(0, 0, S, S);
+
+      // Background
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(0, 0, S, S);
+
+      addNoise(0.018);
+
+      // Glow — bottom right
+      radialFill(S * 0.82, S * 0.78, 900, 'rgba(255,101,0,0.14)', 'rgba(255,101,0,0)');
+      // Glow — top left
+      radialFill(S * 0.12, S * 0.14, 600, 'rgba(255,101,0,0.07)', 'rgba(255,101,0,0)');
+
+      // Decorative rings — bottom right
+      drawRings(S * 0.88, S * 0.85, 260);
+
+      // ── Content ────────────────────────────────────────────────────────
+      const px = 148;  // left padding
+
+      // CoreX. logo — top left
+      ctx.font = "800 52px 'Bricolage Grotesque', system-ui, sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('CoreX', px, 148);
+      const lw = ctx.measureText('CoreX').width;
+      ctx.fillStyle = linearGrad(px + lw, 100, px + lw + 30, 152, '#ff6500', '#ff8c38');
+      ctx.fillText('.', px + lw, 148);
+
+      // Eyebrow pill
+      drawPill(px, 272);
+
+      // Main hook line
+      ctx.font = "800 142px 'Bricolage Grotesque', system-ui, sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('You lost a', px, 450);
+
+      // "customer" — white
+      ctx.fillText('customer', px, 610);
+
+      // "this week." — orange gradient italic (Cormorant)
+      ctx.font = "700 154px 'Cormorant Garamond', Georgia, serif";
+      const tw = ctx.measureText('this week.').width;
+      ctx.fillStyle = linearGrad(px, 520, px + tw, 640, '#ff6500', '#ff8c38', '#ffb347');
+      ctx.fillText('this week.', px, 762);
+
+      // Divider
+      ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(px, 830);
+      ctx.lineTo(S - px, 830);
+      ctx.stroke();
+
+      // Body copy — three bullet points
+      ctx.font = "500 42px 'Inter', system-ui, sans-serif";
+      ctx.fillStyle = '#9898a2';
+
+      const bullets = [
+        'Not because your work was bad.',
+        'Not because your prices were wrong.',
+        'Because of what they saw before',
+        'they ever talked to you.',
+      ];
+
+      let by = 934;
+      bullets.forEach((line, i) => {
+        if (i === 2) ctx.fillStyle = '#c4c4cc';
+        ctx.fillText(line, px, by);
+        by += 64;
+      });
+
+      // Sub-label
+      ctx.font = "600 38px 'Inter', system-ui, sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('That\'s the gap CoreX closes.', px, by + 48);
+
+      // Bottom divider
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(px, S - 200);
+      ctx.lineTo(S - px, S - 200);
+      ctx.stroke();
+
+      // CTA row
+      drawCTA(px, S - 120);
+    }
+
+    function drawPill(x, y) {
+      const text = 'FOR SERVICE BUSINESS OWNERS';
+      ctx.font = "600 26px 'Inter', system-ui, sans-serif";
+      const tw = ctx.measureText(text).width;
+      const ph = 52, pw = tw + 48;
+
+      ctx.fillStyle = 'rgba(255,101,0,0.12)';
+      rrect(x, y - 36, pw, ph, 100); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,101,0,0.28)'; ctx.lineWidth = 1.5;
+      rrect(x, y - 36, pw, ph, 100); ctx.stroke();
+
+      ctx.fillStyle = '#ff6500';
+      ctx.fillText(text, x + 24, y);
+    }
+
+    function drawCTA(x, y) {
+      // Orange dot
+      ctx.fillStyle = '#ff6500';
+      ctx.beginPath(); ctx.arc(x + 10, y - 10, 10, 0, Math.PI * 2); ctx.fill();
+
+      ctx.font = "600 38px 'Inter', system-ui, sans-serif";
+      ctx.fillStyle = '#9898a2';
+      ctx.fillText('Free review at', x + 34, y);
+      const label_w = ctx.measureText('Free review at ').width;
+
+      ctx.fillStyle = '#ff6500';
+      ctx.fillText('www.corexsolutions.net', x + 34 + label_w, y);
+    }
+
+    function drawRings(cx, cy, r) {
+      for (let i = 0; i < 5; i++) {
+        const ri = r + i * 100;
+        const a  = 0.10 - i * 0.015;
+        ctx.strokeStyle = `rgba(255,101,0,${a})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, ri, 0, Math.PI * 2); ctx.stroke();
+      }
+      const ig = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 0.6);
+      ig.addColorStop(0, 'rgba(255,101,0,0.10)');
+      ig.addColorStop(1, 'rgba(255,101,0,0)');
+      ctx.fillStyle = ig;
+      ctx.beginPath(); ctx.arc(cx, cy, r * 0.6, 0, Math.PI * 2); ctx.fill();
+    }
+
+    // ── Util ──────────────────────────────────────────────────────────────
+    function radialFill(cx, cy, r, c0, c1) {
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      g.addColorStop(0, c0); g.addColorStop(1, c1);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, S, S);
+    }
+
+    function linearGrad(x0, y0, x1, y1, ...stops) {
+      const g = ctx.createLinearGradient(x0, y0, x1, y1);
+      stops.forEach((c, i) => g.addColorStop(i / (stops.length - 1), c));
+      return g;
+    }
+
+    function rrect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function addNoise(intensity) {
+      const img = ctx.getImageData(0, 0, S, S);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const n = (Math.random() - 0.5) * intensity * 255;
+        d[i]   = clamp(d[i]   + n);
+        d[i+1] = clamp(d[i+1] + n);
+        d[i+2] = clamp(d[i+2] + n);
+      }
+      ctx.putImageData(img, 0, 0);
+    }
+    function clamp(v) { return Math.min(255, Math.max(0, v | 0)); }
+
+    // ── Download image ────────────────────────────────────────────────────
+    document.getElementById('dl-img').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.download = 'corex-post-1.png';
+      a.href = cv.toDataURL('image/png');
+      a.click();
+    });
+
+    // ── Copy text ─────────────────────────────────────────────────────────
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const raw = `You lost a customer this week.
+
+Not because your work was bad.
+Not because your prices were too high.
+Not because they didn't need you.
+
+They searched. They found your website. They looked around for about 30 seconds — and then they called someone else.
+
+Here's what usually gets in the way:
+
+→ They couldn't figure out what you do from the homepage
+→ Your phone number wasn't easy to find
+→ The site looked outdated and they weren't sure they could trust you
+→ They filled out a form and never heard back
+
+None of that is about the quality of your work. It's about what they see before they ever talk to you.
+
+That's the gap we close at CoreX Solutions.
+
+We look at your business the way a customer does — from the moment they search for you to the moment they decide whether to pick up the phone — and we show you exactly what's getting in the way.
+
+Free review. No commitment. Just honest feedback.
+
+👉 www.corexsolutions.net
+
+#ServiceBusiness #HVAC #Roofing #Contractor #LocalBusiness #MoreLeads #SmallBusiness`;
+
+      navigator.clipboard.writeText(raw).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        btn.style.background = 'rgba(255,101,0,0.15)';
+        btn.style.borderColor = 'rgba(255,101,0,0.4)';
+        btn.style.color = '#ff6500';
+        setTimeout(() => {
+          btn.textContent = 'Copy Post Text';
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2500);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>CoreX — 10s Video</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      font-family: 'Inter', sans-serif;
+      padding: 32px;
+    }
+
+    /* ─── Stage: 9:16 vertical frame ─────────────────────────────────────── */
+    #stage {
+      width: 405px;
+      height: 720px;
+      background: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+
+    /* ─── Background glows ────────────────────────────────────────────────── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    /* ─── Progress bar ────────────────────────────────────────────────────── */
+    #prog {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, #ff6500, #ff8c38);
+      border-radius: 0 2px 2px 0;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    /* ─── Scene base ──────────────────────────────────────────────────────── */
+    .sc {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 40px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ─── Scene 1: Hook ───────────────────────────────────────────────────── */
+    #s1 { justify-content: center; gap: 0; }
+    .hook-line {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: #fff;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    .hook-line.accent {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 56px;
+      background: linear-gradient(135deg, #ff6500 0%, #ff8c38 55%, #ffb347 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 4px;
+    }
+    .hook-sub {
+      margin-top: 22px;
+      font-size: 17px;
+      color: #71717a;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(12px);
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── Phone mockup ─────────────────────────────────────────────────────── */
+    #phone-wrap {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, calc(-50% + 100vh));
+      width: 232px;
+      height: 464px;
+      pointer-events: none;
+    }
+    .phone-shell {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #2c2c2c 0%, #181818 100%);
+      border-radius: 38px;
+      border: 1.5px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 48px 90px rgba(0,0,0,0.75),
+        inset 0 1px 0 rgba(255,255,255,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .phone-screen {
+      position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff;
+    }
+    /* Dynamic island */
+    .d-island {
+      position: absolute;
+      top: 15px; left: 50%;
+      transform: translateX(-50%);
+      width: 74px; height: 24px;
+      background: #0a0a0a;
+      border-radius: 20px;
+      z-index: 30;
+    }
+    /* Side buttons */
+    .sb-r { position: absolute; right: -2px; top: 82px; width: 2.5px; height: 52px; background: #333; border-radius: 2px; }
+    .sb-l1 { position: absolute; left: -2px; top: 72px; width: 2.5px; height: 38px; background: #333; border-radius: 2px; }
+    .sb-l2 { position: absolute; left: -2px; top: 120px; width: 2.5px; height: 38px; background: #333; border-radius: 2px; }
+
+    /* ─── BAD website ─────────────────────────────────────────────────────── */
+    #bad-site {
+      width: 100%; height: 100%;
+      background: #f5f5f4;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      padding-top: 32px;
+    }
+    .b-header {
+      background: #1e3a5f;
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .b-logo { font-size: 7px; font-weight: 800; color: #fff; letter-spacing: 0.02em; }
+    .b-nav { display: flex; gap: 6px; }
+    .b-nav span { font-size: 5.5px; color: rgba(255,255,255,0.7); }
+    .b-hero {
+      background: linear-gradient(180deg, #1e3a5f, #2d5c99);
+      padding: 10px 10px 8px;
+    }
+    .b-hero h1 { font-size: 7.5px; font-weight: 700; color: #fff; line-height: 1.35; margin-bottom: 3px; }
+    .b-hero p { font-size: 5.5px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .b-body { padding: 7px 10px; }
+    .b-stitle { font-size: 6.5px; font-weight: 700; color: #222; text-transform: uppercase; letter-spacing: 0.07em; margin: 5px 0 4px; }
+    .b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
+    .b-box { background: #fff; border: 1px solid #ddd; border-radius: 3px; padding: 5px; }
+    .b-box p { font-size: 6px; font-weight: 700; color: #1e3a5f; }
+    .b-box span { font-size: 5px; color: #888; }
+    .b-txt { font-size: 5.5px; color: #666; line-height: 1.6; margin-bottom: 4px; }
+    .b-footer { background: #2a2a2a; padding: 8px 10px; margin-top: 6px; }
+    .b-ftitle { font-size: 5.5px; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .b-ftext { font-size: 5px; color: #bbb; line-height: 1.8; }
+    .b-ftext strong { color: #fff; }
+
+    /* ─── GOOD website ────────────────────────────────────────────────────── */
+    #good-site {
+      width: 100%; height: 100%;
+      background: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      padding-top: 32px;
+      display: none;
+    }
+    .g-header {
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .g-logo { font-size: 14px; font-weight: 900; color: #fff; letter-spacing: -0.03em; }
+    .g-logo span { color: #ff6500; }
+    .g-body { padding: 18px 14px 14px; }
+    .g-pill {
+      display: inline-block;
+      background: rgba(255,101,0,0.12);
+      border: 1px solid rgba(255,101,0,0.28);
+      color: #ff6500;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .g-h1 {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 7px;
+    }
+    .g-h1 em { color: #ff6500; font-style: normal; }
+    .g-sub { font-size: 8px; color: #9898a2; line-height: 1.55; margin-bottom: 18px; }
+    .g-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: #ff6500;
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 13px 14px;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(255,101,0,0.45);
+      margin-bottom: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .g-cta2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: #9898a2;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+    .g-trust {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+    .g-trust-item {
+      font-size: 6.5px;
+      color: #52525b;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .g-trust-item::before { content: '✓'; color: #ff6500; }
+
+    /* CTA flash overlay */
+    .cta-flash {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.3);
+      animation: flashOut 0.35s ease forwards;
+    }
+    @keyframes flashOut { to { opacity: 0; } }
+
+    /* Calling bar */
+    #call-bar {
+      position: absolute;
+      top: 38px; left: 0; right: 0;
+      background: #16a34a;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      z-index: 50;
+      opacity: 0;
+    }
+    #call-bar .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 0.65s ease infinite alternate;
+    }
+    @keyframes pulse { from { opacity: 0.3; } to { opacity: 1; } }
+    #call-bar span { font-size: 9.5px; font-weight: 700; color: #fff; }
+
+    /* ─── Bad site frustration X ──────────────────────────────────────────── */
+    #bad-x {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(239,68,68,0.12);
+      border: 2px solid rgba(239,68,68,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #ef4444;
+      opacity: 0;
+      z-index: 40;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ─── Caption overlay ─────────────────────────────────────────────────── */
+    #caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 28px 30px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.96));
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+    }
+    #caption .cap-main {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    #caption .cap-main .red { color: #ef4444; }
+    #caption .cap-sub {
+      font-size: 13px;
+      color: #71717a;
+      line-height: 1.5;
+    }
+
+    /* ─── Scene 5: Brand close ────────────────────────────────────────────── */
+    #s5 { background: #0a0a0a; gap: 0; }
+    #s5-logo {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: 78px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.035em;
+      opacity: 0;
+      transform: scale(0.88);
+      margin-bottom: 6px;
+    }
+    #s5-logo span {
+      background: linear-gradient(135deg, #ff6500, #ff8c38);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    #s5-tag {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff6500, #ff8c38, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      transform: translateY(12px);
+      margin-bottom: 28px;
+    }
+    #s5-url {
+      font-size: 17px;
+      color: #52525b;
+      letter-spacing: 0.02em;
+      opacity: 0;
+    }
+    #s5-url strong { color: #9898a2; }
+
+    /* ─── Finger cursor ───────────────────────────────────────────────────── */
+    #finger {
+      position: absolute;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255,255,255,0.8);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .tap-ring {
+      position: absolute;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,101,0,0.7);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 199;
+      animation: tapRing 0.55s ease-out forwards;
+    }
+    @keyframes tapRing {
+      0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.9; }
+      100% { transform: translate(-50%,-50%) scale(2.8); opacity: 0;   }
+    }
+
+    /* ─── Controls ────────────────────────────────────────────────────────── */
+    .ctrls { display: flex; gap: 12px; align-items: center; }
+    .btn-play {
+      background: #ff6500; color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700; font-size: 14px;
+      padding: 12px 32px;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-play:hover { background: #e85c00; }
+    .btn-play:disabled { opacity: 0.5; cursor: default; }
+    .btn-rst {
+      background: rgba(255,255,255,0.06);
+      color: #9898a2;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: 14px;
+      padding: 12px 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-rst:hover { background: rgba(255,255,255,0.1); }
+    .hint {
+      font-size: 12px; color: #3a3a3a;
+      text-align: center; max-width: 405px;
+      line-height: 1.7;
+    }
+    .hint strong { color: #555; }
+  </style>
+</head>
+<body>
+
+  <div class="ctrls">
+    <button class="btn-play" id="btn-play">▶ &nbsp;Play</button>
+    <button class="btn-rst"  id="btn-rst">↺ Restart</button>
+  </div>
+
+  <!-- ════════════════════ STAGE ═════════════════════ -->
+  <div id="stage">
+
+    <!-- Ambient glows -->
+    <div class="orb" style="width:320px;height:320px;background:rgba(255,101,0,0.07);top:-80px;right:-80px"></div>
+    <div class="orb" style="width:260px;height:260px;background:rgba(255,101,0,0.05);bottom:-60px;left:-40px"></div>
+
+    <!-- ── S1: Hook ────────────────────────────────────────────── -->
+    <div class="sc" id="s1">
+      <div class="hook-line" id="hl1">Right now,</div>
+      <div class="hook-line" id="hl2">someone is searching</div>
+      <div class="hook-line accent" id="hl3">for you.</div>
+      <div class="hook-sub" id="hs">Will they find a reason to call?</div>
+    </div>
+
+    <!-- ── Phone ───────────────────────────────────────────────── -->
+    <div id="phone-wrap">
+      <div class="phone-shell" id="pshell">
+        <div class="d-island"></div>
+        <div class="sb-r"></div><div class="sb-l1"></div><div class="sb-l2"></div>
+
+        <div class="phone-screen">
+
+          <!-- BAD site -->
+          <div id="bad-site">
+            <div class="b-header">
+              <div class="b-logo">SMITH'S PLUMBING SERVICES LLC</div>
+              <div class="b-nav"><span>Home</span><span>Services</span><span>Contact</span></div>
+            </div>
+            <div class="b-hero">
+              <h1>Welcome to Smith's Plumbing — Trusted Since 1998</h1>
+              <p>Serving homeowners and businesses across the greater Atlanta area with quality plumbing solutions.</p>
+            </div>
+            <div class="b-body">
+              <div class="b-stitle">Our Services</div>
+              <div class="b-grid">
+                <div class="b-box"><p>Drain Cleaning</p><span>Fast & reliable</span></div>
+                <div class="b-box"><p>Water Heaters</p><span>Install & repair</span></div>
+                <div class="b-box"><p>Pipe Repair</p><span>All pipe types</span></div>
+                <div class="b-box"><p>Emergency</p><span>24/7 available</span></div>
+              </div>
+              <div class="b-stitle">About Us</div>
+              <p class="b-txt">Our team of licensed plumbers brings decades of experience. We take pride in quality workmanship and customer satisfaction on every job we take.</p>
+            </div>
+            <div class="b-footer">
+              <div class="b-ftitle">Contact Information</div>
+              <p class="b-ftext">
+                <strong>Phone:</strong> (770) 555-0192<br/>
+                <strong>Email:</strong> info@smithsplumbing.com<br/>
+                Mon–Fri 8am–6pm | Sat 9am–3pm
+              </p>
+            </div>
+          </div>
+
+          <!-- X overlay -->
+          <div id="bad-x">✕</div>
+
+          <!-- GOOD site -->
+          <div id="good-site">
+            <div class="g-header">
+              <div class="g-logo">CoreX<span>.</span></div>
+            </div>
+            <div class="g-body">
+              <div class="g-pill">Available Now</div>
+              <div class="g-h1">Need a<br/>Plumber <em>Fast?</em></div>
+              <p class="g-sub">Licensed, insured, and ready to help. We'll be there today.</p>
+              <div class="g-cta" id="g-cta">
+                <span>📞</span> Call (678) 835-8150
+              </div>
+              <div class="g-cta2">✉&nbsp; Send a Message</div>
+              <div class="g-trust">
+                <span class="g-trust-item">Licensed</span>
+                <span class="g-trust-item">Insured</span>
+                <span class="g-trust-item">5-Star Rated</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /phone-screen -->
+
+        <!-- Calling bar -->
+        <div id="call-bar">
+          <div class="dot"></div>
+          <span>Calling (678) 835-8150...</span>
+        </div>
+
+      </div><!-- /phone-shell -->
+    </div><!-- /phone-wrap -->
+
+    <!-- Finger cursor -->
+    <div id="finger"></div>
+
+    <!-- Caption overlay -->
+    <div id="caption">
+      <div class="cap-main">Couldn't find how<br/>to reach you. <span class="red">✕</span></div>
+      <div class="cap-sub">So they called your competitor instead.</div>
+    </div>
+
+    <!-- S5: Brand close -->
+    <div class="sc" id="s5">
+      <div id="s5-logo">CoreX<span>.</span></div>
+      <div id="s5-tag">We fix that.</div>
+      <div id="s5-url"><strong>www.corexsolutions.net</strong></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div id="prog"></div>
+
+  </div><!-- /stage -->
+
+  <p class="hint">
+    Hit <strong>Play</strong> · then on Mac: <strong>QuickTime → File → New Screen Recording</strong><br/>
+    drag to select only the stage above · runtime is exactly <strong>10 seconds</strong>
+  </p>
+
+  <script>
+  (function(){
+    // ── Refs ────────────────────────────────────────────────────────────────
+    const $ = id => document.getElementById(id);
+    const stage    = $('stage');
+    const s1       = $('s1');
+    const hl1      = $('hl1');
+    const hl2      = $('hl2');
+    const hl3      = $('hl3');
+    const hs       = $('hs');
+    const phoneWrap= $('phone-wrap');
+    const pshell   = $('pshell');
+    const badSite  = $('bad-site');
+    const goodSite = $('good-site');
+    const badX     = $('bad-x');
+    const finger   = $('finger');
+    const caption  = $('caption');
+    const callBar  = $('call-bar');
+    const gCta     = $('g-cta');
+    const s5       = $('s5');
+    const s5logo   = $('s5-logo');
+    const s5tag    = $('s5-tag');
+    const s5url    = $('s5-url');
+    const prog     = $('prog');
+    const btnPlay  = $('btn-play');
+    const btnRst   = $('btn-rst');
+
+    // ── Layout constants ────────────────────────────────────────────────────
+    // Stage: 405 × 720
+    // Phone wrap centered: phone is 232×464, so top-left at (86.5, 128)
+    const PX = (405 - 232) / 2;   // 86.5 — phone left edge in stage
+    const PY = (720 - 464) / 2;   // 128  — phone top  edge in stage
+    const SX = PX + 10;           // 96.5 — screen left
+    const SY = PY + 10;           // 138  — screen top
+    const SW = 212;               // screen width
+    const SH = 444;               // screen height
+
+    // ── Timers ──────────────────────────────────────────────────────────────
+    let timers = [];
+    let rafs   = [];
+
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+    function clearAll() {
+      timers.forEach(clearTimeout);
+      rafs.forEach(cancelAnimationFrame);
+      timers = []; rafs = [];
+    }
+
+    // ── Transitions ─────────────────────────────────────────────────────────
+    function tr(el, props, dur = 0.45, ease = 'ease') {
+      el.style.transition = Object.keys(props).map(k => `${k} ${dur}s ${ease}`).join(', ');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          Object.entries(props).forEach(([k, v]) => el.style[k] = v);
+        });
+      });
+    }
+
+    // ── Smooth finger movement ───────────────────────────────────────────────
+    function moveFinger(x0, y0, x1, y1, ms, done) {
+      const t0 = performance.now();
+      function step(now) {
+        const p = Math.min((now - t0) / ms, 1);
+        // ease in-out cubic
+        const e = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2,3)/2;
+        finger.style.left = (x0 + (x1-x0)*e) + 'px';
+        finger.style.top  = (y0 + (y1-y0)*e) + 'px';
+        if (p < 1) { rafs.push(requestAnimationFrame(step)); }
+        else if (done) done();
+      }
+      rafs.push(requestAnimationFrame(step));
+    }
+
+    function tapAt(x, y) {
+      // finger compress
+      finger.style.transition = 'transform 0.09s ease';
+      finger.style.transform  = 'translate(-50%,-50%) scale(0.7)';
+      setTimeout(() => {
+        finger.style.transform = 'translate(-50%,-50%) scale(1)';
+      }, 110);
+      // ripple ring
+      const r = document.createElement('div');
+      r.className = 'tap-ring';
+      r.style.left = x + 'px';
+      r.style.top  = y + 'px';
+      stage.appendChild(r);
+      setTimeout(() => r.remove(), 600);
+    }
+
+    // ── Phone shake ──────────────────────────────────────────────────────────
+    function shake(el) {
+      const moves = [0, -6, 6, -5, 5, -3, 3, 0];
+      let i = 0;
+      function step() {
+        if (i >= moves.length) { el.style.transform = ''; return; }
+        el.style.transform = `translateX(${moves[i++]}px)`;
+        rafs.push(requestAnimationFrame(() => setTimeout(step, 38)));
+      }
+      step();
+    }
+
+    // ── Reset ────────────────────────────────────────────────────────────────
+    function reset() {
+      clearAll();
+
+      // Scene 1
+      s1.style.transition = 'none'; s1.style.opacity = '0';
+      [hl1,hl2,hl3].forEach(el => {
+        el.style.transition = 'none';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(22px)';
+      });
+      hs.style.transition = 'none'; hs.style.opacity = '0'; hs.style.transform = 'translateY(12px)';
+
+      // Phone
+      phoneWrap.style.transition = 'none';
+      phoneWrap.style.transform  = 'translate(-50%, calc(-50% + 100vh))';
+      pshell.style.transform     = '';
+      badSite.style.display      = 'block';
+      badSite.style.opacity      = '1';
+      badSite.style.transition   = 'none';
+      goodSite.style.display     = 'none';
+      goodSite.style.opacity     = '1';
+      badX.style.transition      = 'none';
+      badX.style.opacity         = '0';
+
+      // Finger
+      finger.style.transition  = 'none';
+      finger.style.opacity     = '0';
+      finger.style.transform   = 'translate(-50%,-50%) scale(1)';
+      finger.style.left        = '202px';
+      finger.style.top         = '360px';
+
+      // Caption
+      caption.style.transition  = 'none';
+      caption.style.opacity     = '0';
+      caption.style.transform   = 'translateY(16px)';
+
+      // Call bar
+      callBar.style.transition  = 'none';
+      callBar.style.opacity     = '0';
+
+      // Scene 5
+      s5.style.transition      = 'none'; s5.style.opacity = '0';
+      s5logo.style.transition  = 'none'; s5logo.style.opacity = '0'; s5logo.style.transform = 'scale(0.88)';
+      s5tag.style.transition   = 'none'; s5tag.style.opacity  = '0'; s5tag.style.transform  = 'translateY(12px)';
+      s5url.style.transition   = 'none'; s5url.style.opacity  = '0';
+
+      // Progress
+      prog.style.transition    = 'none'; prog.style.width = '0%';
+
+      // Remove orphan tap rings
+      document.querySelectorAll('.tap-ring').forEach(el => el.remove());
+
+      btnPlay.textContent = '▶  Play';
+      btnPlay.disabled    = false;
+    }
+
+    // ── Run ──────────────────────────────────────────────────────────────────
+    function play() {
+      reset();
+      btnPlay.disabled = true;
+      btnPlay.textContent = '■ Playing…';
+
+      // Progress bar
+      at(60, () => {
+        prog.style.transition = 'width 10s linear';
+        prog.style.width = '100%';
+      });
+
+      // ── S1: Hook text (0 → 2.2s) ─────────────────────────────────────
+      s1.style.opacity = '1';
+      at(80,   () => tr(hl1, { opacity:'1', transform:'translateY(0)' }, 0.5));
+      at(600,  () => tr(hl2, { opacity:'1', transform:'translateY(0)' }, 0.5));
+      at(1180, () => tr(hl3, { opacity:'1', transform:'translateY(0)' }, 0.5));
+      at(1760, () => tr(hs,  { opacity:'1', transform:'translateY(0)' }, 0.4));
+
+      // ── S2: Phone slides in (2.2s) ────────────────────────────────────
+      at(2200, () => {
+        tr(s1, { opacity:'0' }, 0.4);
+        at(200, () => {
+          phoneWrap.style.transition = 'transform 0.65s cubic-bezier(0.34,1.3,0.64,1)';
+          phoneWrap.style.transform  = 'translate(-50%,-50%)';
+        });
+      });
+
+      // Finger: appears, scrolls down looking for phone number (3.0s)
+      at(3050, () => {
+        finger.style.left   = (SX + SW * 0.55) + 'px';
+        finger.style.top    = (SY + SH * 0.42) + 'px';
+        finger.style.transition = 'opacity 0.3s ease';
+        finger.style.opacity = '1';
+
+        // Scroll down slowly (looking)
+        at(300, () => moveFinger(
+          SX + SW*0.55, SY + SH*0.42,
+          SX + SW*0.55, SY + SH*0.76,
+          800,
+          () => {
+            // Hesitate, then go to footer
+            at(250, () => moveFinger(
+              SX + SW*0.55, SY + SH*0.76,
+              SX + SW*0.32, SY + SH*0.90,
+              500,
+              () => {
+                // Tap tiny footer phone number
+                tapAt(SX + SW*0.32, SY + SH*0.90);
+                // Move away — confused
+                at(350, () => moveFinger(
+                  SX + SW*0.32, SY + SH*0.90,
+                  SX + SW*0.58, SY + SH*0.55,
+                  420, null
+                ));
+              }
+            ));
+          }
+        ));
+      });
+
+      // ── S3: Frustration (4.85s) ───────────────────────────────────────
+      at(4850, () => {
+        shake(pshell);
+
+        // Fade out finger
+        finger.style.transition = 'opacity 0.25s ease';
+        finger.style.opacity    = '0';
+
+        // X mark
+        badX.style.transition = 'opacity 0.3s ease';
+        badX.style.opacity    = '1';
+
+        // Caption slides up
+        at(350, () => {
+          caption.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+          caption.style.opacity    = '1';
+          caption.style.transform  = 'translateY(0)';
+        });
+      });
+
+      // ── S4: Good site (6.35s) ─────────────────────────────────────────
+      at(6350, () => {
+        // Fade caption + X
+        caption.style.transition = 'opacity 0.35s ease';
+        caption.style.opacity    = '0';
+        badX.style.transition    = 'opacity 0.3s ease';
+        badX.style.opacity       = '0';
+
+        // Crossfade website
+        badSite.style.transition = 'opacity 0.4s ease';
+        badSite.style.opacity    = '0';
+        at(400, () => {
+          badSite.style.display  = 'none';
+          goodSite.style.display = 'block';
+          goodSite.style.opacity = '0';
+          goodSite.style.transition = 'opacity 0.4s ease';
+          at(30, () => { goodSite.style.opacity = '1'; });
+        });
+
+        // Finger reappears — moves confidently to CTA
+        at(750, () => {
+          finger.style.left      = (SX + SW*0.5) + 'px';
+          finger.style.top       = (SY + SH*0.15) + 'px';
+          finger.style.transition = 'opacity 0.25s ease';
+          finger.style.opacity   = '1';
+
+          at(350, () => moveFinger(
+            SX + SW*0.5, SY + SH*0.15,
+            SX + SW*0.5, SY + SH*0.60,
+            550,
+            () => {
+              // Tap CTA
+              at(80, () => {
+                tapAt(SX + SW*0.5, SY + SH*0.60);
+
+                // Flash the button
+                const flash = document.createElement('div');
+                flash.className = 'cta-flash';
+                gCta.appendChild(flash);
+                setTimeout(() => flash.remove(), 400);
+
+                // Calling bar
+                at(380, () => {
+                  callBar.style.transition = 'opacity 0.3s ease';
+                  callBar.style.opacity    = '1';
+                });
+
+                // Fade finger
+                at(550, () => {
+                  finger.style.transition = 'opacity 0.3s ease';
+                  finger.style.opacity    = '0';
+                });
+              });
+            }
+          ));
+        });
+      });
+
+      // ── S5: Brand close (8.5s) ────────────────────────────────────────
+      at(8500, () => {
+        phoneWrap.style.transition = 'opacity 0.5s ease';
+        phoneWrap.style.opacity    = '0';
+
+        s5.style.transition = 'opacity 0.5s ease';
+        s5.style.opacity    = '1';
+
+        at(500, () => {
+          s5logo.style.transition = 'opacity 0.5s ease, transform 0.55s cubic-bezier(0.34,1.56,0.64,1)';
+          s5logo.style.opacity    = '1';
+          s5logo.style.transform  = 'scale(1)';
+        });
+        at(960, () => {
+          s5tag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          s5tag.style.opacity    = '1';
+          s5tag.style.transform  = 'translateY(0)';
+        });
+        at(1380, () => {
+          s5url.style.transition = 'opacity 0.5s ease';
+          s5url.style.opacity    = '1';
+        });
+      });
+
+      // Done
+      at(10100, () => {
+        btnPlay.textContent = '▶  Play Again';
+        btnPlay.disabled    = false;
+      });
+    }
+
+    btnPlay.addEventListener('click', play);
+    btnRst.addEventListener('click',  () => { reset(); setTimeout(play, 80); });
+
+    reset();
+  })();
+  </script>
+</body>
+</html>
