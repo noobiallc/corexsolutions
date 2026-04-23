@@ -101,41 +101,22 @@
     /* Featured image */
     .featured-img{width:100%;border-radius:12px;margin-bottom:40px;aspect-ratio:16/9;object-fit:cover;object-position:center;display:block}
 
-    /* Chat mockup */
-    .chat-mockup{width:100%;border-radius:12px;margin-bottom:40px;background:#0d0d0d;overflow:hidden;border:1px solid rgba(255,101,0,.22);box-shadow:0 8px 40px rgba(0,0,0,.18)}
-    .chat-header{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;background:#111}
-    .chat-logo{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:17px;color:#fff;letter-spacing:-.02em}
-    .chat-logo span{color:#ff6500}
-    .chat-status{display:flex;align-items:center;gap:6px;font-size:12px;color:#9898a2;font-weight:500}
-    .chat-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0}
-    .chat-messages{padding:20px 24px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(160deg,#0f0f0f 0%,#130a00 100%)}
-    .chat-msg{display:flex;flex-direction:column;max-width:72%}
-    .chat-msg.customer{align-self:flex-start;align-items:flex-start}
-    .chat-msg.ai{align-self:flex-end;align-items:flex-end}
-    .msg-from{font-size:11px;font-weight:500;color:#52525b;margin-top:6px;font-family:'Inter',sans-serif;letter-spacing:0}
-    .chat-msg.ai .msg-from{color:rgba(255,101,0,.6);text-align:right}
-    .msg-bubble{padding:12px 16px;font-size:14px;line-height:1.6;font-family:'Inter',sans-serif;font-weight:400;box-shadow:0 2px 12px rgba(0,0,0,.22)}
-    .chat-msg.customer .msg-bubble{background:#fff;color:#111;border-radius:4px 16px 16px 16px}
-    .chat-msg.ai .msg-bubble{background:rgba(255,101,0,.13);border:1px solid rgba(255,101,0,.28);color:#fff;border-radius:16px 4px 16px 16px}
-    .chat-footer{padding:10px 24px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:flex-end;gap:6px;background:#111}
-    .chat-footer-text{font-size:11px;color:#52525b;font-family:'Inter',sans-serif}
-    .chat-footer-logo{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:12px;color:#9898a2;letter-spacing:-.01em}
-    .chat-footer-logo span{color:#ff6500}
-    @media(max-width:480px){.chat-msg{max-width:85%}.msg-bubble{font-size:13px}}
-
-    /* Phone frame */
-    .phone-wrap{display:flex;justify-content:center;margin-bottom:40px}
-    .phone-frame{position:relative;width:min(290px,85vw);background:linear-gradient(145deg,#2c2c2c,#1c1c1c);border-radius:48px;padding:14px 10px;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 1px rgba(0,0,0,.9),0 40px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07)}
-    .phone-frame::before{content:'';position:absolute;right:-3px;top:120px;width:3px;height:50px;background:#252525;border-radius:0 3px 3px 0}
-    .phone-frame::after{content:'';position:absolute;left:-3px;top:90px;width:3px;height:26px;background:#252525;border-radius:3px 0 0 3px;box-shadow:0 38px 0 #252525}
-    .phone-notch{width:100px;height:24px;background:#1c1c1c;border-radius:0 0 18px 18px;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;gap:7px}
-    .phone-speaker{width:42px;height:4px;background:#111;border-radius:2px}
-    .phone-camera{width:8px;height:8px;border-radius:50%;background:#111;border:1px solid rgba(255,255,255,.07);flex-shrink:0}
-    .phone-screen{border-radius:36px;overflow:hidden;background:#0d0d0d}
-    .phone-status{display:flex;justify-content:space-between;align-items:center;padding:7px 18px 4px;background:#111;font-family:'Inter',sans-serif}
-    .phone-status-time{font-size:12px;font-weight:700;color:#fff}
-    .phone-screen .chat-mockup{border-radius:0;margin-bottom:0;border:none;box-shadow:none;width:100%}
-    .phone-home{width:80px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;margin:8px auto 4px}
+    /* Chat mockup — reference style */
+    .chat-mockup{position:relative;width:100%;border-radius:20px;margin-bottom:40px;background:linear-gradient(145deg,#110600 0%,#1c0900 40%,#0d0d0d 100%);overflow:hidden;padding:32px 24px 44px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 80px rgba(0,0,0,.45);border:1px solid rgba(255,101,0,.1)}
+    .chat-orb{position:absolute;border-radius:50%;filter:blur(64px);pointer-events:none}
+    .chat-group{display:flex;flex-direction:column;position:relative;z-index:1;max-width:76%}
+    .chat-group.inbound{align-self:flex-start}
+    .chat-group.outbound{align-self:flex-end}
+    .chat-label-top{font-size:11px;font-weight:500;color:rgba(255,255,255,.38);margin-bottom:7px;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
+    .chat-group.outbound .chat-label-top{justify-content:flex-end}
+    .chat-card{border-radius:14px;padding:13px 17px;font-size:14px;line-height:1.6;color:#1a1a1a;font-family:'Inter',sans-serif;font-weight:400;box-shadow:0 6px 28px rgba(0,0,0,.28)}
+    .chat-group.inbound .chat-card{background:#ffffff}
+    .chat-group.outbound .chat-card{background:#fff7f3;border:1px solid rgba(255,101,0,.12)}
+    .chat-label-bottom{font-size:11px;font-weight:500;color:rgba(255,255,255,.3);margin-top:6px;font-family:'Inter',sans-serif}
+    .chat-group.outbound .chat-label-bottom{text-align:right;color:rgba(255,101,0,.45)}
+    .chat-corner-logo{position:absolute;bottom:16px;left:24px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:13px;color:rgba(255,255,255,.22);z-index:1;letter-spacing:-.02em}
+    .chat-corner-logo span{color:rgba(255,101,0,.4)}
+    @media(max-width:480px){.chat-group{max-width:88%}.chat-card{font-size:13px}}
 
     /* Article body — light section */
     .article-body{background:#fff;color:#0a0a0a}
@@ -256,24 +237,40 @@
   <div class="prose">
 
     <div class="chat-mockup">
-      <div class="chat-messages">
-        <div class="chat-msg customer">
-          <div class="msg-bubble">Hi, my AC stopped working this morning. Can someone come out today?</div>
-          <div class="msg-from">Homeowner · 10:14 AM</div>
-        </div>
-        <div class="chat-msg ai">
-          <div class="msg-bubble">Hi there! We have HVAC technicians available today. We're here 7AM–9PM, 7 days a week — what's your service address?</div>
-          <div class="msg-from">AI Assistant · 10:14 AM</div>
-        </div>
-        <div class="chat-msg customer">
-          <div class="msg-bubble">247 Medlock Bridge Rd, Peachtree Corners.</div>
-          <div class="msg-from">Homeowner · 10:15 AM</div>
-        </div>
-        <div class="chat-msg ai">
-          <div class="msg-bubble">Got it. We've got a 2:30 PM slot open today. Want me to go ahead and book that?</div>
-          <div class="msg-from">AI Assistant · 10:15 AM</div>
-        </div>
+      <div class="chat-orb" style="width:340px;height:340px;background:rgba(255,101,0,.14);top:-100px;right:-80px"></div>
+      <div class="chat-orb" style="width:220px;height:220px;background:rgba(180,80,20,.08);bottom:-40px;left:-60px"></div>
+
+      <div class="chat-group inbound">
+        <div class="chat-label-top">From Homeowner via text message</div>
+        <div class="chat-card">Hi, my AC stopped working this morning. Can someone come out today?</div>
+        <div class="chat-label-bottom">Homeowner • 10:14 AM</div>
       </div>
+
+      <div class="chat-group outbound">
+        <div class="chat-label-top">
+          <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,101,0,.7);display:inline-block;flex-shrink:0"></span>
+          CoreX AI
+        </div>
+        <div class="chat-card">Hi there! We have HVAC technicians available today. We're here 7AM–9PM, 7 days a week — what's your service address?</div>
+        <div class="chat-label-bottom">✦ AI Assistant • 10:14 AM</div>
+      </div>
+
+      <div class="chat-group inbound">
+        <div class="chat-label-top">From Homeowner via text message</div>
+        <div class="chat-card">247 Medlock Bridge Rd, Peachtree Corners.</div>
+        <div class="chat-label-bottom">Homeowner • 10:15 AM</div>
+      </div>
+
+      <div class="chat-group outbound">
+        <div class="chat-label-top">
+          <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,101,0,.7);display:inline-block;flex-shrink:0"></span>
+          CoreX AI
+        </div>
+        <div class="chat-card">Got it. We've got a 2:30 PM slot open today. Want me to go ahead and book that?</div>
+        <div class="chat-label-bottom">✦ AI Assistant • 10:15 AM</div>
+      </div>
+
+      <div class="chat-corner-logo">CoreX<span>.</span></div>
     </div>
 
     <p>Most small business websites have the same quiet problem: visitors arrive, browse for a minute, and leave without ever reaching out. Not because they weren't interested. Because they had a question and no one was there to answer it.</p>
