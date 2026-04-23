@@ -124,6 +124,20 @@
     .chat-footer-logo span{color:#ff6500}
     @media(max-width:480px){.chat-msg{max-width:85%}.msg-bubble{font-size:13px}}
 
+    /* Phone frame */
+    .phone-wrap{display:flex;justify-content:center;margin-bottom:40px}
+    .phone-frame{position:relative;width:min(290px,85vw);background:linear-gradient(145deg,#2c2c2c,#1c1c1c);border-radius:48px;padding:14px 10px;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 1px rgba(0,0,0,.9),0 40px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07)}
+    .phone-frame::before{content:'';position:absolute;right:-3px;top:120px;width:3px;height:50px;background:#252525;border-radius:0 3px 3px 0}
+    .phone-frame::after{content:'';position:absolute;left:-3px;top:90px;width:3px;height:26px;background:#252525;border-radius:3px 0 0 3px;box-shadow:0 38px 0 #252525}
+    .phone-notch{width:100px;height:24px;background:#1c1c1c;border-radius:0 0 18px 18px;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;gap:7px}
+    .phone-speaker{width:42px;height:4px;background:#111;border-radius:2px}
+    .phone-camera{width:8px;height:8px;border-radius:50%;background:#111;border:1px solid rgba(255,255,255,.07);flex-shrink:0}
+    .phone-screen{border-radius:36px;overflow:hidden;background:#0d0d0d}
+    .phone-status{display:flex;justify-content:space-between;align-items:center;padding:7px 18px 4px;background:#111;font-family:'Inter',sans-serif}
+    .phone-status-time{font-size:12px;font-weight:700;color:#fff}
+    .phone-screen .chat-mockup{border-radius:0;margin-bottom:0;border:none;box-shadow:none;width:100%}
+    .phone-home{width:80px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;margin:8px auto 4px}
+
     /* Article body — light section */
     .article-body{background:#fff;color:#0a0a0a}
     .prose{max-width:720px;margin:0 auto;padding:64px 32px}
@@ -242,43 +256,62 @@
 <div class="article-body">
   <div class="prose">
 
-    <div class="chat-mockup">
-      <div class="chat-header">
-        <div class="chat-logo">CoreX<span>.</span></div>
-        <div class="chat-status">AI Assistant · Active on your website</div>
-      </div>
-      <div class="chat-messages">
-        <div class="chat-msg customer">
-          <div class="msg-from">Homeowner · 10:14 AM</div>
-          <div class="msg-bubble">Hi, my AC stopped working this morning. Can someone come out today?</div>
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch">
+          <div class="phone-speaker"></div>
+          <div class="phone-camera"></div>
         </div>
-        <div class="chat-msg ai">
-          <div class="msg-from">CoreX AI Assistant</div>
-          <div class="msg-bubble">Hi! We can definitely help with that. We have HVAC technicians available today. What city are you in?</div>
-          <div class="msg-time">10:14 AM</div>
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span class="phone-status-time">9:41</span>
+            <div style="display:flex;gap:5px;align-items:center">
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="#fff"><rect x="0" y="3" width="2.5" height="7" rx=".8"/><rect x="3.5" y="2" width="2.5" height="8" rx=".8"/><rect x="7" y="1" width="2.5" height="9" rx=".8"/><rect x="10.5" y="0" width="2.5" height="10" rx=".8"/></svg>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="#fff"><path d="M7 2C9.4 2 11.5 3 13 4.7L14 3.6C12.2 1.6 9.7.5 7 .5S1.8 1.6 0 3.6l1 1.1C2.5 3 4.6 2 7 2z"/><path d="M7 4.5c1.5 0 2.8.6 3.8 1.6L12 5c-1.3-1.3-3-2.1-5-2.1S3.3 3.7 2 5l1.2 1.1C4.2 5.1 5.5 4.5 7 4.5z"/><path d="M7 7c.8 0 1.5.3 2 .9L10.5 6.4C9.6 5.5 8.4 5 7 5S4.4 5.5 3.5 6.4L5 7.9C5.5 7.3 6.2 7 7 7z"/><circle cx="7" cy="9.5" r="1.2"/></svg>
+              <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="18" height="10" rx="2.5" stroke="#fff" stroke-opacity=".4"/><rect x="2" y="2" width="14" height="7" rx="1.5" fill="#fff"/><path d="M20 3.8v3.4a1.7 1.7 0 000-3.4z" fill="#fff" fill-opacity=".35"/></svg>
+            </div>
+          </div>
+          <div class="chat-mockup">
+            <div class="chat-header">
+              <div class="chat-logo">CoreX<span>.</span></div>
+              <div class="chat-status">AI Assistant · Active on your website</div>
+            </div>
+            <div class="chat-messages">
+              <div class="chat-msg customer">
+                <div class="msg-from">Homeowner · 10:14 AM</div>
+                <div class="msg-bubble">Hi, my AC stopped working this morning. Can someone come out today?</div>
+              </div>
+              <div class="chat-msg ai">
+                <div class="msg-from">CoreX AI Assistant</div>
+                <div class="msg-bubble">Hi! We can definitely help with that. We have HVAC technicians available today. What city are you in?</div>
+                <div class="msg-time">10:14 AM</div>
+              </div>
+              <div class="chat-msg customer">
+                <div class="msg-from">Homeowner · 10:15 AM</div>
+                <div class="msg-bubble">Peachtree Corners, GA.</div>
+              </div>
+              <div class="chat-msg ai">
+                <div class="msg-from">CoreX AI Assistant</div>
+                <div class="msg-bubble">Perfect — we have a 2:30 PM slot open today. Can I get your address to confirm the appointment?</div>
+                <div class="msg-time">10:15 AM</div>
+              </div>
+              <div class="chat-msg customer">
+                <div class="msg-from">Homeowner · 10:15 AM</div>
+                <div class="msg-bubble">Sure, 247 Medlock Bridge Rd.</div>
+              </div>
+              <div class="chat-msg ai">
+                <div class="msg-from">CoreX AI Assistant</div>
+                <div class="msg-bubble">Got it. Your appointment is confirmed for 2:30 PM today. You'll receive a confirmation text shortly. ✓</div>
+                <div class="msg-time">10:16 AM</div>
+              </div>
+            </div>
+            <div class="chat-footer">
+              <span class="chat-footer-text">Powered by</span>
+              <span class="chat-footer-logo">CoreX<span>.</span></span>
+            </div>
+          </div>
         </div>
-        <div class="chat-msg customer">
-          <div class="msg-from">Homeowner · 10:15 AM</div>
-          <div class="msg-bubble">Peachtree Corners, GA.</div>
-        </div>
-        <div class="chat-msg ai">
-          <div class="msg-from">CoreX AI Assistant</div>
-          <div class="msg-bubble">Perfect — we have a 2:30 PM slot open today. Can I get your address to confirm the appointment?</div>
-          <div class="msg-time">10:15 AM</div>
-        </div>
-        <div class="chat-msg customer">
-          <div class="msg-from">Homeowner · 10:15 AM</div>
-          <div class="msg-bubble">Sure, 247 Medlock Bridge Rd.</div>
-        </div>
-        <div class="chat-msg ai">
-          <div class="msg-from">CoreX AI Assistant</div>
-          <div class="msg-bubble">Got it. Your appointment is confirmed for 2:30 PM today. You'll receive a confirmation text shortly. ✓</div>
-          <div class="msg-time">10:16 AM</div>
-        </div>
-      </div>
-      <div class="chat-footer">
-        <span class="chat-footer-text">Powered by</span>
-        <span class="chat-footer-logo">CoreX<span>.</span></span>
+        <div class="phone-home"></div>
       </div>
     </div>
 
