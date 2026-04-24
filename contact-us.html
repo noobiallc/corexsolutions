@@ -696,6 +696,13 @@ form.addEventListener('submit',async(e)=>{
     if(res.ok){
       formWrap.classList.add('hide');
       successMsg.classList.add('show');
+      if(typeof gtag==='function'){
+        gtag('event','lead_submission',{
+          event_category:'Lead',
+          event_label:'Contact Form',
+          value:1
+        });
+      }
     } else {
       btn.textContent='Get My Free Growth Review';
       btn.disabled=false;
@@ -707,14 +714,6 @@ form.addEventListener('submit',async(e)=>{
     alert('Something went wrong. Please email us directly at info@corexsolutions.net');
   }
 });
-
-// ── GA4 lead_submission event ─────────────────────────────────────────────────
-const leadForm=document.getElementById('contact-form');
-if(leadForm && typeof gtag==='function'){
-  leadForm.addEventListener('submit',()=>{
-    gtag('event','lead_submission',{form_id:'contact-form'});
-  });
-}
 </script>
 
 </body>
