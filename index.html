@@ -537,6 +537,96 @@
 
 
 
+<!-- ══ WHO IT'S FOR ═══════════════════════════════════════════════════════════ -->
+<section style="padding:80px 0;background:var(--bg-2)">
+  <div class="wrap">
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;margin-bottom:44px;flex-wrap:wrap">
+      <div>
+        <div class="sr" style="margin-bottom:14px"><span class="pill pill-orange">Who It's For</span></div>
+        <h2 class="t-h2 sr d1">Built for service <span class="grad-it">businesses.</span></h2>
+      </div>
+    </div>
+
+    <style>
+      .ind-card{
+        position:relative;border-radius:var(--radius-lg);overflow:hidden;
+        height:440px;cursor:default;
+      }
+      .ind-card img{
+        position:absolute;inset:0;width:100%;height:100%;
+        object-fit:cover;object-position:center;
+        transition:transform .6s ease;
+      }
+      .ind-card:hover img{transform:scale(1.04)}
+      .ind-card-overlay{
+        position:absolute;inset:0;
+        background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,rgba(0,0,0,.08) 100%);
+      }
+      .ind-card-tag{
+        position:absolute;top:18px;left:18px;
+        font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+        color:rgba(255,255,255,.9);
+        background:rgba(0,0,0,.45);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(8px);
+        padding:5px 11px;border-radius:100px;
+      }
+      .ind-card-body{
+        position:absolute;bottom:0;left:0;right:0;padding:24px;
+      }
+      @media(max-width:700px){.ind-card-grid{grid-template-columns:1fr!important}.ind-card{height:320px}}
+    </style>
+
+    <div class="sr d3 ind-card-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=700&q=80"
+          alt="Home services tradesperson at work"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Home Services</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Home Services</p>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">HVAC, roofing, landscaping, flooring, plumbing, electrical, and similar trades.</p>
+        </div>
+      </div>
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=700&q=80"
+          alt="Professional service consultation"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Trust-Based</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Trust-Based Businesses</p>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">Daycares and service businesses where trust and credibility are everything.</p>
+        </div>
+      </div>
+
+      <div class="ind-card">
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"
+          alt="Contractors and tradespeople at work"
+          loading="lazy"
+        />
+        <div class="ind-card-overlay"></div>
+        <span class="ind-card-tag">Contractors & Trades</span>
+        <div class="ind-card-body">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Contractors & Trades</p>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">General contractors, remodelers, painters, and specialty trades that grow through steady calls and referrals.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- ══ PROBLEM ════════════════════════════════════════════════════════════════ -->
 <section class="section" style="background:var(--bg-light)">
   <div class="wrap">
@@ -782,102 +872,12 @@
 </section>
 
 
-<!-- ══ WHO IT'S FOR ═══════════════════════════════════════════════════════════ -->
-<section style="padding:80px 0;background:var(--bg-2)">
-  <div class="wrap">
-
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;margin-bottom:44px;flex-wrap:wrap">
-      <div>
-        <div class="sr" style="margin-bottom:14px"><span class="pill pill-orange">Who It's For</span></div>
-        <h2 class="t-h2 sr d1">Built for service <span class="grad-it">businesses.</span></h2>
-      </div>
-    </div>
-
-    <style>
-      .ind-card{
-        position:relative;border-radius:var(--radius-lg);overflow:hidden;
-        height:440px;cursor:default;
-      }
-      .ind-card img{
-        position:absolute;inset:0;width:100%;height:100%;
-        object-fit:cover;object-position:center;
-        transition:transform .6s ease;
-      }
-      .ind-card:hover img{transform:scale(1.04)}
-      .ind-card-overlay{
-        position:absolute;inset:0;
-        background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,rgba(0,0,0,.08) 100%);
-      }
-      .ind-card-tag{
-        position:absolute;top:18px;left:18px;
-        font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-        color:rgba(255,255,255,.9);
-        background:rgba(0,0,0,.45);
-        border:1px solid rgba(255,255,255,.15);
-        backdrop-filter:blur(8px);
-        padding:5px 11px;border-radius:100px;
-      }
-      .ind-card-body{
-        position:absolute;bottom:0;left:0;right:0;padding:24px;
-      }
-      @media(max-width:700px){.ind-card-grid{grid-template-columns:1fr!important}.ind-card{height:320px}}
-    </style>
-
-    <div class="sr d3 ind-card-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-
-      <div class="ind-card">
-        <img
-          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=700&q=80"
-          alt="Home services tradesperson at work"
-          loading="lazy"
-        />
-        <div class="ind-card-overlay"></div>
-        <span class="ind-card-tag">Home Services</span>
-        <div class="ind-card-body">
-          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Home Services</p>
-          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">HVAC, roofing, landscaping, flooring, plumbing, electrical, and similar trades.</p>
-        </div>
-      </div>
-
-      <div class="ind-card">
-        <img
-          src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=700&q=80"
-          alt="Professional service consultation"
-          loading="lazy"
-        />
-        <div class="ind-card-overlay"></div>
-        <span class="ind-card-tag">Trust-Based</span>
-        <div class="ind-card-body">
-          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Trust-Based Businesses</p>
-          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">Daycares and service businesses where trust and credibility are everything.</p>
-        </div>
-      </div>
-
-      <div class="ind-card">
-        <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"
-          alt="Contractors and tradespeople at work"
-          loading="lazy"
-        />
-        <div class="ind-card-overlay"></div>
-        <span class="ind-card-tag">Contractors & Trades</span>
-        <div class="ind-card-body">
-          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif">Contractors & Trades</p>
-          <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.6">General contractors, remodelers, painters, and specialty trades that grow through steady calls and referrals.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
 <!-- ══ WHY COREX ══════════════════════════════════════════════════════════════ -->
-<section class="section" style="background:var(--bg-light)">
+<section class="section" style="background:var(--bg-2)">
   <div class="wrap">
     <div style="margin-bottom:56px">
       <div class="sr" style="margin-bottom:16px"><span class="pill pill-orange">Why CoreX</span></div>
-      <h2 class="t-h2 sr d1" style="color:#0a0a0a">Why Businesses <span class="grad-it">Choose CoreX</span></h2>
+      <h2 class="t-h2 sr d1" style="color:#fff">Why Businesses <span class="grad-it">Choose CoreX</span></h2>
     </div>
 
     <div class="sr d2 why-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
