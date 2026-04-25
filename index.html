@@ -679,24 +679,29 @@
 <section class="section" style="background:var(--bg-light)">
   <div class="wrap">
     <style>
-      .wcd-top{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-bottom:40px}
+      .wcd-top{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-bottom:48px}
       @media(max-width:900px){.wcd-top{grid-template-columns:1fr;gap:32px}}
-      .wcd-img{width:100%;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.1)}
-      .wcd-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:320px}
+      .wcd-img{position:relative;width:100%;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 24px 60px rgba(15,15,15,.12),0 4px 12px rgba(15,15,15,.06)}
+      .wcd-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,101,0,.05) 0%,transparent 60%);pointer-events:none}
+      .wcd-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:340px}
       .wcd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
       @media(max-width:820px){.wcd-grid{grid-template-columns:repeat(2,1fr)}}
       @media(max-width:420px){.wcd-grid{grid-template-columns:1fr}}
       .wcd-item{
-        display:flex;align-items:center;gap:10px;
-        padding:14px 16px;
-        background:var(--card);
-        border:1px solid var(--card-b);
+        display:flex;align-items:center;gap:12px;
+        padding:16px 18px;
+        background:#fff;
+        border:1px solid rgba(15,15,15,.06);
         border-radius:12px;
-        font-size:14px;font-weight:600;color:#fff;line-height:1.35;
+        font-size:14.5px;font-weight:600;color:#0a0a0a;line-height:1.35;
+        box-shadow:0 1px 3px rgba(15,15,15,.04);
+        transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
       }
-      .wcd-dot{
-        flex-shrink:0;width:8px;height:8px;border-radius:50%;
-        background:var(--orange);box-shadow:0 0 12px rgba(255,101,0,.5);
+      .wcd-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,15,15,.08);border-color:rgba(255,101,0,.25)}
+      .wcd-check{
+        flex-shrink:0;width:22px;height:22px;border-radius:50%;
+        background:var(--orange-lo);border:1px solid rgba(255,101,0,.25);
+        display:flex;align-items:center;justify-content:center;
       }
     </style>
 
@@ -715,19 +720,19 @@
         </p>
       </div>
       <div class="sr d2 wcd-img">
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80" alt="Desk with laptop, phone, and notebook representing connected business tools" loading="lazy"/>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="MacBook showing analytics dashboard with connected business metrics" loading="lazy"/>
       </div>
     </div>
 
     <div class="sr d4 wcd-grid">
-      <div class="wcd-item"><span class="wcd-dot"></span>Calls</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Contact forms</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Quote requests</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Google profile visibility</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Follow-up</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Reminders</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>Simple automation</div>
-      <div class="wcd-item"><span class="wcd-dot"></span>AI tools when they actually help</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Calls</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Contact forms</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Quote requests</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Google profile visibility</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Follow-up</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Reminders</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Simple automation</div>
+      <div class="wcd-item"><span class="wcd-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>AI tools when they actually help</div>
     </div>
 
     <div style="max-width:780px">
@@ -771,7 +776,7 @@
       </div>
 
       <div class="svc-card card">
-        <img class="svc-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="Google Maps on a phone showing a local business" loading="lazy"/>
+        <img class="svc-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Google search results on a laptop screen" loading="lazy"/>
         <div class="svc-body">
           <div style="width:40px;height:40px;border-radius:10px;background:var(--orange-lo);border:1px solid rgba(255,101,0,.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8z"/></svg>
@@ -815,7 +820,7 @@
       </div>
 
       <div class="svc-card card">
-        <img class="svc-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=80" alt="AI chat interface" loading="lazy"/>
+        <img class="svc-img" src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=800&q=80" alt="Person using AI chat assistant on laptop" loading="lazy"/>
         <div class="svc-body">
           <div style="width:40px;height:40px;border-radius:10px;background:var(--orange-lo);border:1px solid rgba(255,101,0,.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
