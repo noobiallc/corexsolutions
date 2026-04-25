@@ -12,14 +12,7 @@
     var href = a.getAttribute('href') || '';
     if (!href) return;
 
-    if (href.indexOf('tel:') === 0) {
-      fire('call_click', {
-        phone: href.replace('tel:', ''),
-        cta_location: window.location.pathname,
-        link_text: (a.textContent || '').trim().slice(0, 80)
-      });
-      return;
-    }
+    // tel: links are tracked via inline onclick on each <a> tag (call_click event)
 
     if (href.indexOf('mailto:') === 0) {
       fire('email_click', {
