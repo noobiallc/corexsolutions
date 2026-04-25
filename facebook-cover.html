@@ -67,25 +67,27 @@
       ctx.fillStyle = orangeGrad(108 + cx_w, 50, 108 + cx_w + 22, 90);
       ctx.fillText('.', 108 + cx_w, 88);
 
-      // ── Main headline ──────────────────────────────────────────────────
-      const hy = 222;
-      const lh = 106;
+      // ── Main headline — matches landing hero ───────────────────────────
+      const hy = 240;
+      const lh = 104;
 
-      // Line 1 — white
-      ctx.font = "800 86px 'Bricolage Grotesque', system-ui, sans-serif";
+      // Line 1 — white bold sans
+      ctx.font = "800 80px 'Bricolage Grotesque', system-ui, sans-serif";
       ctx.fillStyle = '#ffffff';
-      ctx.fillText('Get More Calls.', 108, hy);
+      ctx.fillText('Get more leads from the', 108, hy);
 
-      // Line 2 — white
-      ctx.fillText('Respond Faster.', 108, hy + lh);
+      // Line 2 — Cormorant italic + orange gradient (matches site .grad-it)
+      ctx.font = "700 92px 'Cormorant Garamond', Georgia, serif";
+      const g2x = 108;
+      const g2y = hy + lh;
+      const g2w = ctx.measureText('tools you already have.').width;
+      ctx.fillStyle = makeGrad(g2x, g2y - 80, g2x + g2w, g2y, '#ff6500', '#ff8c38', '#ffb347');
+      ctx.fillText('tools you already have.', g2x, g2y);
 
-      // Line 3 — Cormorant italic + orange gradient (matches site .grad-it)
-      ctx.font = "700 94px 'Cormorant Garamond', Georgia, serif";
-      const g3x = 108;
-      const g3y = hy + lh * 2;
-      const g3w = ctx.measureText('Close More Jobs.').width;
-      ctx.fillStyle = makeGrad(g3x, g3y - 80, g3x + g3w, g3y, '#ff6500', '#ff8c38', '#ffb347');
-      ctx.fillText('Close More Jobs.', g3x, g3y);
+      // Subhead — small supporting line
+      ctx.font = "500 26px 'Inter', system-ui, sans-serif";
+      ctx.fillStyle = '#c4c4cc';
+      ctx.fillText('Website · Google profile · Lead capture · Follow-up', 108, g2y + 62);
 
       // ── Contact row — bottom center (safe zone) ────────────────────────
       drawContactBar();
