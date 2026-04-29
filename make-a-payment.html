@@ -27,14 +27,14 @@
   <meta property="og:title" content="Make a Payment — CoreX Solutions"/>
   <meta property="og:description" content="Securely submit a payment or deposit to CoreX Solutions."/>
   <meta property="og:url" content="https://corexsolutions.net/make-a-payment.html"/>
-  <meta property="og:image" content="https://corexsolutions.net/images/og-image.jpg"/>
+  <meta property="og:image" content="https://corexsolutions.net/founder.jpg"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Make a Payment — CoreX Solutions"/>
   <meta name="twitter:description" content="Securely submit a payment or deposit to CoreX Solutions."/>
-  <meta name="twitter:image" content="https://corexsolutions.net/images/og-image.jpg"/>
+  <meta name="twitter:image" content="https://corexsolutions.net/founder.jpg"/>
   <!-- Local / Geo -->
   <meta name="geo.region" content="US-GA"/>
   <meta name="geo.placename" content="Peachtree Corners, Georgia"/>
@@ -73,7 +73,7 @@
     .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between}
     @media(max-width:768px){.nav-inner{padding:0 20px}}
     .nav-logo{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#0a0a0a}
-    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links{display:flex;align-items:center;gap:28px}
     .nav-link{font-size:16px;font-weight:500;color:#52525b;transition:color .2s}
     .nav-link:hover,.nav-link.active{color:#0a0a0a}
     #ham-btn{display:none;background:none;border:none;cursor:pointer;padding:6px}
@@ -84,7 +84,7 @@
     @media(max-width:860px){.nav-links{display:none}#ham-btn{display:block}#mob-nav{display:block}}
 
     /* Buttons */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;padding:15px 28px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;width:100%}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;padding:15px 28px;border-radius:10px;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none}
     .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 24px rgba(255,101,0,.35),0 1px 0 rgba(255,255,255,.15) inset}
     .btn-primary:hover{background:#e85c00;transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,101,0,.45)}
 
@@ -105,29 +105,27 @@
     <a href="index.html" class="nav-logo">CoreX<span class="grad">.</span></a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="how-it-works.html" class="nav-link">How It Works</a>
+      <a href="about.html"    class="nav-link">About</a>
+      <a href="how-it-works.html"  class="nav-link">How It Works</a>
       <a href="results.html" class="nav-link">Results</a>
       <a href="insights.html" class="nav-link">Insights</a>
-      <a href="make-a-payment.html" class="nav-link active">Make a Payment</a>
-      <a href="contact-us.html" class="nav-link" style="font-weight:600;color:var(--orange)">Get a Free Lead Flow Check</a>
+      <a href="contact-us.html" class="btn btn-primary" style="padding:10px 22px;font-size:15px">Get a Free Lead Flow Check</a>
       <a href="tel:+16788358150" onclick="gtag('event','call_click',{event_category:'Lead',event_label:'Phone Call',transport_type:'beacon'});" class="nav-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
     </div>
     <button id="ham-btn" aria-label="Menu" aria-expanded="false">
-      <svg id="ico-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="ico-open"  width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       <svg id="ico-close" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <div id="mob-nav">
     <div class="mob-links">
       <a href="index.html" class="mob-link">Home</a>
-      <a href="about.html" class="mob-link">About</a>
-      <a href="how-it-works.html" class="mob-link">How It Works</a>
+      <a href="about.html"    class="mob-link">About</a>
+      <a href="how-it-works.html"  class="mob-link">How It Works</a>
       <a href="results.html" class="mob-link">Results</a>
       <a href="insights.html" class="mob-link">Insights</a>
-      <a href="make-a-payment.html" class="mob-link" style="color:#0a0a0a;font-weight:600">Make a Payment</a>
-      <a href="contact-us.html" class="mob-link" style="color:var(--orange);font-weight:600">Get a Free Lead Flow Check</a>
-      <a href="tel:+16788358150" onclick="gtag('event','call_click',{event_category:'Lead',event_label:'Phone Call',transport_type:'beacon'});" class="mob-link" style="font-weight:600;color:#0a0a0a">(678) 835-8150</a>
+      <a href="contact-us.html" class="btn btn-primary" style="margin-top:12px;justify-content:center">Get a Free Lead Flow Check</a>
+      <a href="tel:+16788358150" onclick="gtag('event','call_click',{event_category:'Lead',event_label:'Phone Call',transport_type:'beacon'});" class="mob-link" style="font-weight:600;color:#0a0a0a;text-align:center;justify-content:center">(678) 835-8150</a>
     </div>
   </div>
 </nav>
